@@ -86,7 +86,7 @@ public/
 
 ---
 
-## FÁZE 1 — Design system & layout foundation
+## FÁZE 1 — Design system & layout foundation ✅
 
 ### 1.1 Design tokens (Tailwind theme)
 
