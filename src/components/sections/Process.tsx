@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { Stack } from "@/components/ui/Stack";
 import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
 import { processSteps } from "@/lib/content";
+import { Reveal } from "@/components/animations/Reveal";
 
 export function Process() {
   return (
@@ -19,8 +20,14 @@ export function Process() {
             </Stack>
           </div>
 
-          {/* Kroky */}
-          <div className="border-border grid grid-cols-1 gap-px border md:grid-cols-3">
+          {/*
+           * Reveal becomes the grid so its DIRECT children are the step cards.
+           * Grid classes carried from the original div.
+           */}
+          <Reveal
+            stagger={0.1}
+            className="border-border grid grid-cols-1 gap-px border md:grid-cols-3"
+          >
             {processSteps.map((step) => (
               <div key={step.number} className="bg-surface p-8 md:p-10">
                 <Stack gap="md">
@@ -38,7 +45,7 @@ export function Process() {
                 </Stack>
               </div>
             ))}
-          </div>
+          </Reveal>
         </Stack>
       </Container>
     </Section>

@@ -5,11 +5,12 @@ import { Stack } from "@/components/ui/Stack";
 import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
 import { ButtonLink } from "@/components/ui/Button";
 import { categories, getPreviewPhotos } from "@/lib/gallery";
+import { Reveal } from "@/components/animations/Reveal";
 
 /**
  * Homepage gallery preview section — shows 3 categories with 4 preview images each
  * and a link to the full category page.
- * Server component — no client state needed.
+ * Server component — Reveal client wrappers are fine inside RSC.
  */
 export function GalleryPreview() {
   return (
@@ -26,8 +27,8 @@ export function GalleryPreview() {
             </Stack>
           </div>
 
-          {/* Category blocks */}
-          <div className="grid grid-cols-1 gap-16 md:gap-20">
+          {/* Category blocks — Reveal becomes the grid, children are category blocks */}
+          <Reveal stagger={0.12} className="grid grid-cols-1 gap-16 md:gap-20">
             {categories.map((cat) => {
               const previews = getPreviewPhotos(cat.slug, 4);
               return (
@@ -52,8 +53,11 @@ export function GalleryPreview() {
                       </ButtonLink>
                     </div>
 
-                    {/* Preview grid */}
-                    <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
+                    {/* Preview grid — Reveal becomes the grid, children are individual photo links */}
+                    <Reveal
+                      stagger={0.07}
+                      className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3"
+                    >
                       {previews.map((photo) => (
                         <a
                           key={photo.src}
@@ -77,12 +81,12 @@ export function GalleryPreview() {
                           </div>
                         </a>
                       ))}
-                    </div>
+                    </Reveal>
                   </Stack>
                 </div>
               );
             })}
-          </div>
+          </Reveal>
         </Stack>
       </Container>
     </Section>

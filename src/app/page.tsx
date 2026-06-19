@@ -6,18 +6,35 @@ import { Pricing } from "@/components/sections/Pricing";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Faq } from "@/components/sections/Faq";
 import { Contact } from "@/components/sections/Contact";
+import { ScrollLine } from "@/components/animations/ScrollLine";
+import { Reveal } from "@/components/animations/Reveal";
 
 export default function Home() {
   return (
     <>
+      <ScrollLine />
       <Hero />
-      <About />
-      <Process />
-      <GalleryPreview />
-      <Pricing />
-      <Testimonials />
-      <Faq />
-      <Contact />
+      <Reveal>
+        <About />
+      </Reveal>
+      <Reveal>
+        <Process />
+      </Reveal>
+      <Reveal>
+        <GalleryPreview />
+      </Reveal>
+      <Reveal>
+        <Pricing />
+      </Reveal>
+      <Reveal>
+        <Testimonials />
+      </Reveal>
+      <Reveal>
+        <Faq />
+      </Reveal>
+      <Reveal>
+        <Contact />
+      </Reveal>
     </>
   );
 }

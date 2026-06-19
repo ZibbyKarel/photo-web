@@ -5,6 +5,7 @@ import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
 import { ButtonLink } from "@/components/ui/Button";
 import { pricingPackages, pricingNote } from "@/lib/content";
 import { cn } from "@/lib/cn";
+import { Reveal } from "@/components/animations/Reveal";
 
 export function Pricing() {
   return (
@@ -21,8 +22,11 @@ export function Pricing() {
             </Stack>
           </div>
 
-          {/* Karty */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {/*
+           * Reveal becomes the card grid so its DIRECT children are the price cards.
+           * Grid classes carried from the original div.
+           */}
+          <Reveal stagger={0.1} className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {pricingPackages.map((pkg) => (
               <div
                 key={pkg.id}
@@ -69,7 +73,7 @@ export function Pricing() {
                 </ButtonLink>
               </div>
             ))}
-          </div>
+          </Reveal>
 
           {/* Poznámka */}
           <p className="text-faint max-w-xl text-sm leading-relaxed">{pricingNote}</p>

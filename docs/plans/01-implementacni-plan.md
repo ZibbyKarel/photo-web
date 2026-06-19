@@ -197,7 +197,7 @@ public/
 
 ---
 
-## FÁZE 4 — Animace (GSAP ScrollTrigger)
+## FÁZE 4 — Animace (GSAP ScrollTrigger) ✅
 
 > Použít `useGSAP` (`@gsap/react`) a `gsap.context` pro cleanup. **Vždy** obalit `gsap.matchMedia()` pro `prefers-reduced-motion` a breakpointy.
 
