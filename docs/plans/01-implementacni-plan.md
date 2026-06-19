@@ -39,7 +39,7 @@ Zaměření: **rodinné focení**, **reality**, **krajinky**.
 
 ---
 
-## FÁZE 0 — Setup & základy projektu
+## FÁZE 0 — Setup & základy projektu ✅
 
 ### 0.1 Scaffold
 
