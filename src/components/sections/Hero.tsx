@@ -32,8 +32,8 @@ export function Hero() {
             Zachytím vaše skutečné okamžiky
           </Heading>
           <Text size="lg" tone="muted" className="max-w-xl">
-            Rodinné focení, reality a krajiny. Přirozené světlo, autentické momenty — bez přehnaných
-            pózování.
+            Rodinné focení, svatby a události — i z ptačí perspektivy. Přirozené světlo, skutečné
+            emoce, žádné křečovité pózování.
           </Text>
           <div className="flex flex-wrap gap-4 pt-2">
             <ButtonLink href="/#kontakt" size="lg">

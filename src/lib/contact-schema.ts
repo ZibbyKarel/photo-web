@@ -11,7 +11,7 @@ export const contactSchema = z.object({
   phone: z.string().optional(),
 
   /** Prázdný řetězec (žádná volba) je normalizován na undefined před validací. */
-  type: z.enum(["rodina", "reality", "krajiny", "jine"]).optional(),
+  type: z.enum(["rodina", "svatba", "udalost", "dron", "jine"]).optional(),
 
   message: z
     .string()

@@ -26,7 +26,7 @@ export function Pricing() {
            * Reveal becomes the card grid so its DIRECT children are the price cards.
            * Grid classes carried from the original div.
            */}
-          <Reveal stagger={0.1} className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <Reveal stagger={0.1} className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {pricingPackages.map((pkg) => (
               <div
                 key={pkg.id}

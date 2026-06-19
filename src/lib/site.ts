@@ -3,15 +3,15 @@
  * TODO: nahradit skutečným jménem / brandingem a kontakty (viz docs/plans, otevřená otázka #1).
  */
 export const site = {
-  name: "Jméno Fotografa",
-  shortName: "Fotograf",
+  name: "Karel Zíbar",
+  shortName: "Karel Zíbar",
   tagline: "Fotograf — Plzeň a okolí",
   description:
-    "Rodinné focení, reality a krajiny v Plzni a okolí. Autentické fotografie zachycující skutečné okamžiky.",
+    "Rodinné focení, svatby, události a letecké snímky z dronu v Plzni a okolí. Autentické fotografie, které zachytí skutečné okamžiky.",
   url: "https://example.cz",
-  email: "ahoj@example.cz",
-  phone: "+420 000 000 000",
-  phoneHref: "tel:+420000000000",
+  email: "karel.zibar@icloud.com",
+  phone: "+420 722 616 617",
+  phoneHref: "tel:+420722616617",
   location: "Plzeň",
   instagram: "https://instagram.com",
   instagramHandle: "@fotograf",

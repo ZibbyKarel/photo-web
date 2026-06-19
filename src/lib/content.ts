@@ -47,31 +47,48 @@ export type PricingPackage = {
 
 export const pricingPackages: PricingPackage[] = [
   {
-    id: "rodinne",
+    id: "rodina",
     title: "Rodinné focení",
     price: "od 1 800 Kč",
-    description: "Pro rodiny, páry i jednotlivce — venku i v interiéru.",
-    features: ["1–1,5 hodiny focení", "Online galerie ke stažení", "25+ upravených fotek"],
+    description: "Uvolněné focení rodiny doma nebo v přírodě.",
+    features: ["1–1,5 hodiny focení", "Online galerie", "25+ upravených fotek", "Dodání do 10 dnů"],
     highlight: true,
   },
   {
-    id: "reality-byt",
-    title: "Reality — byt do 80 m²",
-    price: "od 1 500 Kč",
-    description: "Profesionální fotky nemovitosti pro inzerci nebo pronájem.",
-    features: ["20–30 fotek", "Dodání do 48 hodin", "Základní retušování"],
+    id: "svatba",
+    title: "Svatba",
+    price: "od 8 900 Kč",
+    description: "Reportáž z vašeho svatebního dne.",
+    features: [
+      "6–8 hodin focení",
+      "300+ upravených fotek",
+      "Online galerie ke stažení",
+      "Konzultace předem",
+    ],
   },
   {
-    id: "reality-dum",
-    title: "Reality — dům / větší",
-    price: "od 2 500 Kč",
-    description: "Větší nemovitosti a pozemky, možnost záběrů z dronu.",
-    features: ["30+ fotek", "Dodání do 48 hodin", "+ možnost dronu (příplatek)"],
+    id: "udalost",
+    title: "Události",
+    price: "od 1 500 Kč / hod",
+    description: "Oslavy, křtiny, firemní i společenské akce.",
+    features: ["Reportážní focení", "Online galerie", "Dodání do 10 dnů", "Flexibilní délka"],
+  },
+  {
+    id: "dron",
+    title: "Z dronu",
+    price: "od 1 500 Kč",
+    description: "Letecké snímky samostatně nebo jako příplatek k focení.",
+    features: [
+      "Letecké foto z dronu",
+      "Samostatně či jako doplněk",
+      "Dle počasí a lokality",
+      "Úprava v ceně",
+    ],
   },
 ] as const;
 
 export const pricingNote =
-  "Ceny pro první klienty — průběžně se upravují. Nestandardní požadavky rád probereme individuálně.";
+  "Orientační ceny — každá zakázka je jiná. Nestandardní požadavky nebo kombinace služeb rád probereme individuálně.";
 
 /* ---------------------------------------------------------------------------
    Testimonials — Reference
@@ -98,9 +115,9 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "t3",
-    name: "Jana M.",
-    role: "Reality — byt",
-    text: "Byt se na fotkách rozzářil. Inzerát jsme měli online do dvou dnů od focení a zájem byl okamžitý. Určitě doporučuji.",
+    name: "Petra a Martin",
+    role: "Svatba — Plzeň",
+    text: "Karel zachytil náš den přesně tak, jak jsme si přáli — přirozeně, bez zbytečného organizování. Fotky jsou plné emocí a vracíme se k nim stále znovu. Děkujeme!",
   },
 ] as const;
 
@@ -118,13 +135,13 @@ export const faqItems: FaqItem[] = [
     id: "faq-1",
     question: "Jak dlouho trvá zpracování fotek?",
     answer:
-      "U rodinného focení do 7–10 pracovních dnů. U realitní fotografie do 48 hodin. Pokud potřebujete fotky dříve, domluvte se se mnou předem — urgentní dodání je možné.",
+      "U rodinného focení a akcí do 10 pracovních dnů. U svatební reportáže počítejte se 4–6 týdny — každou fotku pečlivě zpracuji. Pokud potřebujete část fotek dříve, domluvíme se předem.",
   },
   {
     id: "faq-2",
-    question: "Fotíte exteriér i interiér?",
+    question: "Fotíte venku i uvnitř?",
     answer:
-      "Fotím obojí. Rodinné focení preferuji venku pro přirozené světlo, ale interiér je také možný. U realit fotím výhradně uvnitř, exteriér domu nebo zahradu jako bonus.",
+      "Fotím obojí. Rodinné focení preferuji venku pro přirozené světlo, ale doma je to také možné. Svatební den fotím dle programu — ať je to kostel, obřadní síň nebo zahrada. Přizpůsobím se vám.",
   },
   {
     id: "faq-3",

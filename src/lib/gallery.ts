@@ -11,7 +11,7 @@ import { galleryPhotos } from "./gallery.generated";
    Types
 --------------------------------------------------------------------------- */
 
-export type CategorySlug = "rodina" | "reality" | "priroda";
+export type CategorySlug = "rodina" | "svatby" | "udalosti" | "dron";
 
 export type GalleryPhoto = {
   category: CategorySlug;
@@ -36,20 +36,22 @@ export const categories: GalleryCategory[] = [
   {
     slug: "rodina",
     title: "Rodina",
-    description:
-      "Autentické momenty rodinného života — smích, objetí, spontánnost. Venku i v interiéru, přirozené světlo.",
+    description: "Přirozené rodinné okamžiky — doma, venku, ve světle běžného dne.",
   },
   {
-    slug: "reality",
-    title: "Reality",
-    description:
-      "Profesionální fotografie nemovitostí pro inzerci i prezentaci. Světlé prostory, správné úhly.",
+    slug: "svatby",
+    title: "Svatby",
+    description: "Reportáž z vašeho dne — emoce, detaily i velké momenty.",
   },
   {
-    slug: "priroda",
-    title: "Příroda",
-    description:
-      "Krajina Plzeňska ve všech ročních obdobích — zlaté světlo, mlha, dramatické mraky.",
+    slug: "udalosti",
+    title: "Události",
+    description: "Oslavy, křtiny, firemní i společenské akce zachycené v pohybu.",
+  },
+  {
+    slug: "dron",
+    title: "Z dronu",
+    description: "Letecké snímky — místa a okamžiky z ptačí perspektivy.",
   },
 ] as const;
 

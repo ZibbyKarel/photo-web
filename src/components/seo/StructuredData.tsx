@@ -33,13 +33,18 @@ export function StructuredData() {
       addressCountry: "CZ",
     },
     sameAs: [site.instagram],
-    knowsAbout: ["Rodinné focení", "Focení nemovitostí", "Krajinářská fotografie"],
+    knowsAbout: [
+      "Rodinné focení",
+      "Svatební fotografie",
+      "Focení událostí",
+      "Letecká fotografie z dronu",
+    ],
     makesOffer: [
       {
         "@type": "Offer",
         name: "Rodinné focení",
         description:
-          "Autentické rodinné focení v exteriéru nebo interiéru. Přirozené světlo, spontánní okamžiky. Dodání online galerie do 48 hodin.",
+          "Uvolněné focení rodiny doma nebo venku. Přirozené světlo, spontánní okamžiky. Dodání online galerie do 10 dnů.",
         priceCurrency: "CZK",
         price: "1800",
         priceSpecification: {
@@ -54,9 +59,26 @@ export function StructuredData() {
       },
       {
         "@type": "Offer",
-        name: "Focení nemovitostí — byt",
+        name: "Svatba",
         description:
-          "Profesionální fotografie bytu pro inzerci nebo prezentaci. 20–30 upravených fotek, dodání do 48 hodin.",
+          "Reportáž z celého svatebního dne. 6–8 hodin focení, 300+ upravených fotek, online galerie ke stažení.",
+        priceCurrency: "CZK",
+        price: "8900",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          priceCurrency: "CZK",
+          minPrice: "8900",
+        },
+        areaServed: {
+          "@type": "City",
+          name: "Plzeň",
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Události",
+        description:
+          "Focení oslav, křtin, firemních i společenských akcí. Reportážní styl, dodání do 10 dnů.",
         priceCurrency: "CZK",
         price: "1500",
         priceSpecification: {
@@ -71,15 +93,15 @@ export function StructuredData() {
       },
       {
         "@type": "Offer",
-        name: "Focení nemovitostí — dům",
+        name: "Z dronu",
         description:
-          "Profesionální fotografie domu nebo větší nemovitosti. Možnost dronového záběru jako příplatek.",
+          "Letecké snímky z dronu — samostatně nebo jako doplněk k focení. Dle počasí a lokality.",
         priceCurrency: "CZK",
-        price: "2500",
+        price: "1500",
         priceSpecification: {
           "@type": "PriceSpecification",
           priceCurrency: "CZK",
-          minPrice: "2500",
+          minPrice: "1500",
         },
         areaServed: {
           "@type": "City",

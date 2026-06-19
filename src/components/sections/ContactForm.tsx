@@ -164,8 +164,9 @@ export function ContactForm() {
             Vyberte typ...
           </option>
           <option value="rodina">Rodinné focení</option>
-          <option value="reality">Reality</option>
-          <option value="krajiny">Krajiny</option>
+          <option value="svatba">Svatba</option>
+          <option value="udalost">Událost / oslava</option>
+          <option value="dron">Focení z dronu</option>
           <option value="jine">Jiné</option>
         </select>
         <FieldError id="error-type" messages={fieldErrors.type} />

@@ -37,8 +37,8 @@ export function About() {
                 </Text>
                 <Text tone="muted">
                   Fotím venku i v interiéru, ale přirozené světlo je moje doména. Pracuji klidně,
-                  bez spěchu — chci, aby se před objektivem cítil každý pohodlně. Vedle rodinných
-                  fotografií se věnuji realitní fotografii a krajinám.
+                  bez spěchu — chci, aby se před objektivem cítil každý pohodlně. Vedle rodinného
+                  focení se věnuji svatebním reportážím, focení událostí a leteckým záběrům z dronu.
                 </Text>
               </Stack>
 

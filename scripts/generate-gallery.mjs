@@ -9,8 +9,9 @@
  * To use REAL photos:
  *   1. Place your source images (JPG/JPEG/PNG) into:
  *        gallery-source/rodina/
- *        gallery-source/reality/
- *        gallery-source/priroda/
+ *        gallery-source/svatby/
+ *        gallery-source/udalosti/
+ *        gallery-source/dron/
  *   2. Run: npm run gallery
  *   The script resizes them (max 2000px wide, quality 80) and writes them to
  *   public/gallery/<category>/, then regenerates the manifest.
@@ -35,12 +36,16 @@ const CATEGORIES = [
     altPrefix: "Rodinné focení v Plzni",
   },
   {
-    slug: "reality",
-    altPrefix: "Realitní fotografie v Plzni",
+    slug: "svatby",
+    altPrefix: "Svatební fotografie v Plzni",
   },
   {
-    slug: "priroda",
-    altPrefix: "Příroda a krajina v okolí Plzně",
+    slug: "udalosti",
+    altPrefix: "Focení události v Plzni",
+  },
+  {
+    slug: "dron",
+    altPrefix: "Letecký snímek z dronu — Plzeňsko",
   },
 ];
 
@@ -57,8 +62,7 @@ const PLACEHOLDER_ASPECTS = [
   [800, 1200], // portrait 2/3
 ];
 
-// Warm tonally-rich background colors — terra/ochre/sand/amber palette
-// Varied across categories to feel distinct
+// Tonally-rich background colors per category
 const PLACEHOLDER_COLORS = {
   rodina: [
     { r: 74, g: 50, b: 38 }, // deep umber
@@ -70,25 +74,35 @@ const PLACEHOLDER_COLORS = {
     { r: 120, g: 88, b: 60 }, // warm tan
     { r: 95, g: 68, b: 48 }, // earthy
   ],
-  reality: [
-    { r: 40, g: 52, b: 65 }, // slate blue
-    { r: 50, g: 62, b: 75 }, // muted steel
-    { r: 55, g: 68, b: 80 }, // warm grey-blue
-    { r: 45, g: 58, b: 70 }, // deep slate
-    { r: 60, g: 72, b: 82 }, // soft blue
-    { r: 48, g: 60, b: 72 }, // mid slate
-    { r: 52, g: 65, b: 78 }, // medium steel
-    { r: 42, g: 55, b: 68 }, // dark slate
+  svatby: [
+    { r: 220, g: 210, b: 195 }, // light cream
+    { r: 210, g: 198, b: 182 }, // warm ivory
+    { r: 225, g: 215, b: 200 }, // soft linen
+    { r: 205, g: 193, b: 178 }, // warm beige
+    { r: 215, g: 205, b: 190 }, // pale sand
+    { r: 230, g: 218, b: 204 }, // bridal white-warm
+    { r: 200, g: 190, b: 175 }, // antique linen
+    { r: 218, g: 208, b: 193 }, // champagne
   ],
-  priroda: [
-    { r: 35, g: 55, b: 38 }, // forest dark
-    { r: 45, g: 68, b: 48 }, // deep green
-    { r: 55, g: 80, b: 55 }, // moss green
-    { r: 65, g: 92, b: 62 }, // leafy green
-    { r: 40, g: 62, b: 42 }, // mid forest
-    { r: 50, g: 74, b: 52 }, // olive
-    { r: 60, g: 85, b: 58 }, // sage
-    { r: 42, g: 65, b: 44 }, // deep sage
+  udalosti: [
+    { r: 160, g: 100, b: 55 }, // warm amber
+    { r: 175, g: 115, b: 65 }, // golden ochre
+    { r: 145, g: 90, b: 48 }, // dark amber
+    { r: 190, g: 130, b: 75 }, // honey
+    { r: 155, g: 95, b: 52 }, // bronze
+    { r: 170, g: 110, b: 60 }, // warm copper
+    { r: 140, g: 85, b: 45 }, // deep ochre
+    { r: 180, g: 120, b: 68 }, // golden brown
+  ],
+  dron: [
+    { r: 38, g: 85, b: 105 }, // aerial teal
+    { r: 45, g: 95, b: 118 }, // sky blue
+    { r: 32, g: 75, b: 95 }, // deep aerial
+    { r: 52, g: 105, b: 128 }, // light sky
+    { r: 40, g: 90, b: 110 }, // mid teal
+    { r: 30, g: 68, b: 88 }, // dark teal
+    { r: 58, g: 112, b: 135 }, // bright aerial
+    { r: 35, g: 80, b: 100 }, // ocean-sky
   ],
 };
 
@@ -238,7 +252,7 @@ async function main() {
       const altDescriptions = {
         rodina: [
           "Rodina při společném výletu",
-          "Rodinný portrét v přírodě",
+          "Rodinný portrét venku",
           "Dětský smích a radost",
           "Rodinné objetí a teplo domova",
           "Spontánní rodinný moment",
@@ -246,25 +260,35 @@ async function main() {
           "Rodinná procházka Plzní",
           "Vzácné okamžiky rodinného života",
         ],
-        reality: [
-          "Světlý obývací pokoj s moderním interiérem",
-          "Kuchyně s otevřeným prostorem",
-          "Ložnice s elegantním designem",
-          "Koupelna s přírodními materiály",
-          "Prostorná terasa s výhledem",
-          "Detail interiéru nemovitosti",
-          "Vstupní hala moderního bytu",
-          "Pracovní kout s přirozeným osvětlením",
+        svatby: [
+          "Svatební pár v objetí",
+          "Detail svatebních prstenů",
+          "Nevěsta před obřadem",
+          "První tanec novomanželů",
+          "Svatební hosté a emoce",
+          "Romantický moment novomanželů",
+          "Výzdoba svatebního stolu",
+          "Skupinové foto na svatbě",
         ],
-        priroda: [
-          "Zlaté světlo při západu slunce",
-          "Mlha nad ranní krajinou Plzeňska",
-          "Lesní stezka v podzimních barvách",
-          "Vodní hladina reflektující oblohu",
-          "Pole s dramatickými mraky",
-          "Stromová alej v ranním oparu",
-          "Jarní rozkvět v okolí Plzně",
-          "Romantická zimní krajina",
+        udalosti: [
+          "Oslava narozenin v plném proudu",
+          "Křtiny — první rodinná fotka",
+          "Firemní akce a společná nálada",
+          "Reportáž z rodinné oslavy",
+          "Spontánní moment společenské akce",
+          "Detaily výzdoby a prostředí akce",
+          "Skupinové foto na oslavě",
+          "Radostné okamžiky ze slavnostní události",
+        ],
+        dron: [
+          "Letecký pohled na Plzeň",
+          "Krajina Plzeňska z ptačí perspektivy",
+          "Letecký snímek venkovní akce",
+          "Drone pohled na místo konání",
+          "Vzdušný záběr přírody Plzeňska",
+          "Letecká panorama města",
+          "Dron nad krajinou za soumraku",
+          "Letecký detail architektonické dominanty",
         ],
       };
 

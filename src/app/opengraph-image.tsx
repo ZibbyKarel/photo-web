@@ -88,7 +88,7 @@ export default async function Image() {
           fontWeight: "400",
         }}
       >
-        Rodinné focení, reality a krajiny
+        Rodinné focení · Svatby · Události · Dron
       </div>
     </div>,
     {

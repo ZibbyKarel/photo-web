@@ -41,8 +41,9 @@ export async function POST(request: Request) {
 
   const typeLabels: Record<string, string> = {
     rodina: "Rodinné focení",
-    reality: "Reality",
-    krajiny: "Krajiny",
+    svatba: "Svatba",
+    udalost: "Událost / oslava",
+    dron: "Focení z dronu",
     jine: "Jiné",
   };
   const typeLabel = type ? (typeLabels[type] ?? type) : "—";
