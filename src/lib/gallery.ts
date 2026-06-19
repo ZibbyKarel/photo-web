@@ -5,14 +5,14 @@
  * Run `npm run gallery` to regenerate images and update gallery.generated.ts.
  */
 
-import { galleryPhotos } from "./gallery.generated";
 import { isSanityConfigured } from "@/sanity/env";
+import { galleryPhotos } from "./gallery.generated";
 
 /* ---------------------------------------------------------------------------
    Types
 --------------------------------------------------------------------------- */
 
-export type CategorySlug = "rodina" | "svatby" | "udalosti" | "dron";
+export type CategorySlug = "rodina" | "svatby_udalosti" | "dron" | "ostatni";
 
 export type GalleryPhoto = {
   category: CategorySlug;
@@ -40,19 +40,19 @@ export const categories: GalleryCategory[] = [
     description: "Přirozené rodinné okamžiky — doma, venku, ve světle běžného dne.",
   },
   {
-    slug: "svatby",
-    title: "Svatby",
-    description: "Reportáž z vašeho dne — emoce, detaily i velké momenty.",
-  },
-  {
-    slug: "udalosti",
-    title: "Události",
-    description: "Oslavy, křtiny, firemní i společenské akce zachycené v pohybu.",
+    slug: "svatby_udalosti",
+    title: "Svatby a jiné události",
+    description: "Svatby, oslavy, křtiny, firemní i společenské akce zachycené v pohybu.",
   },
   {
     slug: "dron",
     title: "Z dronu",
     description: "Letecké snímky — místa a okamžiky z ptačí perspektivy.",
+  },
+  {
+    slug: "ostatni",
+    title: "Ostatní",
+    description: "Volnější tvorba a momenty, které se nevešly do ostatních kategorií.",
   },
 ] as const;
 

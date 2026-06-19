@@ -9,9 +9,9 @@
  * To use REAL photos:
  *   1. Place your source images (JPG/JPEG/PNG) into:
  *        gallery-source/rodina/
- *        gallery-source/svatby/
- *        gallery-source/udalosti/
+ *        gallery-source/svatby_udalosti/
  *        gallery-source/dron/
+ *        gallery-source/ostatni/
  *   2. Run: npm run gallery
  *   The script resizes them (max 2000px wide, quality 80) and writes them to
  *   public/gallery/<category>/, then regenerates the manifest.
@@ -36,16 +36,16 @@ const CATEGORIES = [
     altPrefix: "Rodinné focení v Plzni",
   },
   {
-    slug: "svatby",
-    altPrefix: "Svatební fotografie v Plzni",
-  },
-  {
-    slug: "udalosti",
-    altPrefix: "Focení události v Plzni",
+    slug: "svatby_udalosti",
+    altPrefix: "Svatba a událost v Plzni",
   },
   {
     slug: "dron",
     altPrefix: "Letecký snímek z dronu — Plzeňsko",
+  },
+  {
+    slug: "ostatni",
+    altPrefix: "Fotografie — Plzeň a okolí",
   },
 ];
 
@@ -74,7 +74,7 @@ const PLACEHOLDER_COLORS = {
     { r: 120, g: 88, b: 60 }, // warm tan
     { r: 95, g: 68, b: 48 }, // earthy
   ],
-  svatby: [
+  svatby_udalosti: [
     { r: 220, g: 210, b: 195 }, // light cream
     { r: 210, g: 198, b: 182 }, // warm ivory
     { r: 225, g: 215, b: 200 }, // soft linen
@@ -84,7 +84,7 @@ const PLACEHOLDER_COLORS = {
     { r: 200, g: 190, b: 175 }, // antique linen
     { r: 218, g: 208, b: 193 }, // champagne
   ],
-  udalosti: [
+  ostatni: [
     { r: 160, g: 100, b: 55 }, // warm amber
     { r: 175, g: 115, b: 65 }, // golden ochre
     { r: 145, g: 90, b: 48 }, // dark amber
@@ -260,25 +260,25 @@ async function main() {
           "Rodinná procházka Plzní",
           "Vzácné okamžiky rodinného života",
         ],
-        svatby: [
+        svatby_udalosti: [
           "Svatební pár v objetí",
           "Detail svatebních prstenů",
           "Nevěsta před obřadem",
           "První tanec novomanželů",
           "Svatební hosté a emoce",
-          "Romantický moment novomanželů",
-          "Výzdoba svatebního stolu",
-          "Skupinové foto na svatbě",
+          "Oslava v plném proudu",
+          "Společenská akce a nálada",
+          "Skupinové foto z události",
         ],
-        udalosti: [
-          "Oslava narozenin v plném proudu",
-          "Křtiny — první rodinná fotka",
-          "Firemní akce a společná nálada",
-          "Reportáž z rodinné oslavy",
-          "Spontánní moment společenské akce",
-          "Detaily výzdoby a prostředí akce",
-          "Skupinové foto na oslavě",
-          "Radostné okamžiky ze slavnostní události",
+        ostatni: [
+          "Fotografie z volné tvorby",
+          "Detail a atmosféra okamžiku",
+          "Portrét v přirozeném světle",
+          "Reportážní moment",
+          "Kompozice a hra světla",
+          "Okamžik zachycený mimo ateliér",
+          "Záběr z prostředí",
+          "Autentický moment",
         ],
         dron: [
           "Letecký pohled na Plzeň",

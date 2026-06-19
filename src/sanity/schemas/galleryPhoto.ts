@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 
 /**
  * Fotka galerie — fotograf přidává obrázky přes Studio.
- * Kategorie odpovídají statickým slug hodnotám (rodina|svatby|udalosti|dron).
+ * Kategorie odpovídají statickým slug hodnotám (rodina|svatby_udalosti|dron|ostatni).
  */
 export const galleryPhoto = defineType({
   name: "galleryPhoto",
@@ -30,9 +30,9 @@ export const galleryPhoto = defineType({
       options: {
         list: [
           { title: "Rodina", value: "rodina" },
-          { title: "Svatby", value: "svatby" },
-          { title: "Události", value: "udalosti" },
+          { title: "Svatby a jiné události", value: "svatby_udalosti" },
           { title: "Z dronu", value: "dron" },
+          { title: "Ostatní", value: "ostatni" },
         ],
         layout: "radio",
       },

@@ -40,6 +40,12 @@ yarn-error.log*
 # vercel
 .vercel
 
+# raw photo originals — processed into public/gallery/ via `npm run gallery` (large, not served)
+/gallery-source/
+
+# graphify knowledge-graph output (generated)
+/graphify-out/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

@@ -39,13 +39,33 @@ export function Reveal({
       const mm = gsap.matchMedia();
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        gsap.from(targets, {
-          opacity: 0,
-          y,
-          duration: 0.8,
-          ease: "power2.out",
-          stagger,
-          scrollTrigger: { trigger: el, start },
+        gsap.set(targets, { opacity: 0, y });
+
+        let revealed = false;
+        const reveal = () => {
+          if (revealed) return;
+          revealed = true;
+          gsap.to(targets, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger,
+            overwrite: "auto",
+          });
+        };
+
+        ScrollTrigger.create({
+          trigger: el,
+          start,
+          onEnter: reveal,
+          onEnterBack: reveal,
+          // Anchor jumps / scroll restoration can land us already past `start`
+          // without an onEnter ever firing. On every (re)compute, if we're at or
+          // beyond the start, reveal — guarantees content is never stuck hidden.
+          onRefresh: (self) => {
+            if (self.scroll() >= self.start) reveal();
+          },
         });
       });
 

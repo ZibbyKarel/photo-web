@@ -3,6 +3,7 @@ import { Fraunces, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StructuredData } from "@/components/seo/StructuredData";
+import { ScrollRefresh } from "@/components/animations/ScrollRefresh";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { site } from "@/lib/site";
@@ -71,6 +72,7 @@ export default function RootLayout({
     <html lang="cs" className={`${inter.variable} ${fraunces.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <StructuredData />
+        <ScrollRefresh />
         <Header />
         <main className="flex flex-1 flex-col">{children}</main>
         <Footer />
