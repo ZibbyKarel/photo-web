@@ -166,7 +166,7 @@ public/
 
 ---
 
-## FÁZE 3 — Galerie
+## FÁZE 3 — Galerie ✅
 
 ### 3.1 Datový model
 
