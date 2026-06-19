@@ -259,7 +259,7 @@ public/
 
 ---
 
-## FÁZE 6 — Content management (volitelné, po MVP)
+## FÁZE 6 — Content management (volitelné, po MVP) ✅
 
 > Cíl: aby fotograf přidával fotky a reference bez zásahu do kódu. Až když web žije.
 

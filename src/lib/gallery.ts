@@ -6,6 +6,7 @@
  */
 
 import { galleryPhotos } from "./gallery.generated";
+import { isSanityConfigured } from "@/sanity/env";
 
 /* ---------------------------------------------------------------------------
    Types
@@ -69,12 +70,28 @@ export function getCategorySlugs(): CategorySlug[] {
   return categories.map((c) => c.slug);
 }
 
-/** Returns all photos for a given category slug. */
-export function getPhotosByCategory(slug: CategorySlug): GalleryPhoto[] {
+/** Static photos for a category — used as fallback when Sanity is not configured. */
+function getStaticPhotosByCategory(slug: CategorySlug): GalleryPhoto[] {
   return (galleryPhotos as readonly GalleryPhoto[]).filter((p) => p.category === slug);
 }
 
+/**
+ * Returns all photos for a given category slug.
+ *
+ * Fallback: pokud je nastaveno `NEXT_PUBLIC_SANITY_PROJECT_ID`, čte ze Sanity;
+ * jinak vrací statická data jako dosud. Async kvůli Sanity fetch.
+ */
+export async function getPhotosByCategory(slug: CategorySlug): Promise<GalleryPhoto[]> {
+  if (isSanityConfigured) {
+    const { fetchPhotosByCategory } = await import("@/sanity/data");
+    const photos = await fetchPhotosByCategory(slug);
+    // Bezpečnostní fallback: prázdný dataset → statický obsah.
+    if (photos.length > 0) return photos;
+  }
+  return getStaticPhotosByCategory(slug);
+}
+
 /** Returns the first n photos for a category — used in the homepage preview. */
-export function getPreviewPhotos(slug: CategorySlug, n: number): GalleryPhoto[] {
-  return getPhotosByCategory(slug).slice(0, n);
+export async function getPreviewPhotos(slug: CategorySlug, n: number): Promise<GalleryPhoto[]> {
+  return (await getPhotosByCategory(slug)).slice(0, n);
 }

@@ -51,7 +51,7 @@ export default async function GaleriePage({ params }: PageProps) {
 
   const slug = kategorie as CategorySlug;
   const cat = getCategory(slug)!;
-  const photos = getPhotosByCategory(slug);
+  const photos = await getPhotosByCategory(slug);
 
   // Other categories for navigation
   const otherCategories = categories.filter((c) => c.slug !== slug);

@@ -121,6 +121,22 @@ export const testimonials: Testimonial[] = [
   },
 ] as const;
 
+/**
+ * Vrací reference.
+ *
+ * Fallback: pokud je nastaveno `NEXT_PUBLIC_SANITY_PROJECT_ID`, čte ze Sanity;
+ * jinak vrací statická data `testimonials` jako dosud.
+ */
+export async function getTestimonials(): Promise<Testimonial[]> {
+  const { isSanityConfigured } = await import("@/sanity/env");
+  if (isSanityConfigured) {
+    const { fetchTestimonials } = await import("@/sanity/data");
+    const fromSanity = await fetchTestimonials();
+    if (fromSanity.length > 0) return fromSanity;
+  }
+  return testimonials as Testimonial[];
+}
+
 /* ---------------------------------------------------------------------------
    FAQ — Nejčastější otázky
 --------------------------------------------------------------------------- */

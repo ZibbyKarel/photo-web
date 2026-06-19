@@ -123,8 +123,9 @@ export function Lightbox({ photos, currentIndex, onClose, onNext, onPrev }: Ligh
             alt={photo.alt}
             width={photo.width}
             height={photo.height}
-            placeholder="blur"
-            blurDataURL={photo.blurDataURL}
+            {...(photo.blurDataURL
+              ? { placeholder: "blur" as const, blurDataURL: photo.blurDataURL }
+              : {})}
             className="h-auto max-h-[calc(100vh-6rem)] max-w-full object-contain"
             sizes="(min-width: 1024px) 80vw, 90vw"
             priority

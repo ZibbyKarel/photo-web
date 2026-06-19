@@ -12,7 +12,10 @@ import { Reveal } from "@/components/animations/Reveal";
  * and a link to the full category page.
  * Server component — Reveal client wrappers are fine inside RSC.
  */
-export function GalleryPreview() {
+export async function GalleryPreview() {
+  // Fotky pro každou kategorii vyřešíme dopředu (nelze awaitovat uvnitř .map render).
+  const previewsByCat = await Promise.all(categories.map((cat) => getPreviewPhotos(cat.slug, 4)));
+
   return (
     <Section id="galerie" className="border-border scroll-mt-24 border-t">
       <Container>
@@ -29,8 +32,8 @@ export function GalleryPreview() {
 
           {/* Category blocks — Reveal becomes the grid, children are category blocks */}
           <Reveal stagger={0.12} className="grid grid-cols-1 gap-16 md:gap-20">
-            {categories.map((cat) => {
-              const previews = getPreviewPhotos(cat.slug, 4);
+            {categories.map((cat, catIndex) => {
+              const previews = previewsByCat[catIndex];
               return (
                 <div key={cat.slug}>
                   <Stack gap="lg">
@@ -72,8 +75,9 @@ export function GalleryPreview() {
                               alt={photo.alt}
                               width={photo.width}
                               height={photo.height}
-                              placeholder="blur"
-                              blurDataURL={photo.blurDataURL}
+                              {...(photo.blurDataURL
+                                ? { placeholder: "blur" as const, blurDataURL: photo.blurDataURL }
+                                : {})}
                               loading="lazy"
                               sizes="(min-width: 640px) 25vw, 50vw"
                               className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"

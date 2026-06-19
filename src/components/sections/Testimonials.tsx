@@ -3,9 +3,11 @@ import { Container } from "@/components/ui/Container";
 import { Stack } from "@/components/ui/Stack";
 import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
 import { Placeholder } from "@/components/ui/Placeholder";
-import { testimonials } from "@/lib/content";
+import { getTestimonials } from "@/lib/content";
 
-export function Testimonials() {
+export async function Testimonials() {
+  const testimonials = await getTestimonials();
+
   return (
     <Section className="bg-surface border-border border-t">
       <Container>
