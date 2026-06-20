@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useLightbox } from "@/hooks/useLightbox";
 import { Lightbox } from "./Lightbox";
 import type { GalleryPhoto } from "@/lib/gallery";
@@ -17,6 +18,7 @@ type GalleryGridProps = {
  */
 export function GalleryGrid({ photos }: GalleryGridProps) {
   const lb = useLightbox();
+  const ta = useTranslations("a11y");
 
   const handleNext = () => lb.next(photos.length);
   const handlePrev = () => lb.prev(photos.length);
@@ -30,7 +32,7 @@ export function GalleryGrid({ photos }: GalleryGridProps) {
             <button
               onClick={() => lb.open(index)}
               className="group focus-visible:outline-accent-strong relative block w-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-offset-2"
-              aria-label={`Otevřít: ${photo.alt}`}
+              aria-label={ta("openPhoto", { alt: photo.alt })}
             >
               <Image
                 src={photo.src}

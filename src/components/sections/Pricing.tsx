@@ -1,23 +1,26 @@
+import { useTranslations } from "next-intl";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Stack } from "@/components/ui/Stack";
 import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
 import { ButtonLink } from "@/components/ui/Button";
-import { pricingPackages, pricingNote } from "@/lib/content";
+import { pricingPackages } from "@/lib/content";
 import { cn } from "@/lib/cn";
 import { Reveal } from "@/components/animations/Reveal";
 
 export function Pricing() {
+  const t = useTranslations("pricing");
+
   return (
     <Section id="cenik" className="border-border scroll-mt-24 border-t">
       <Container>
         <Stack gap="xl">
-          {/* Záhlaví */}
+          {/* Section header */}
           <div className="max-w-xl">
             <Stack gap="sm">
-              <Eyebrow>Ceník</Eyebrow>
+              <Eyebrow>{t("eyebrow")}</Eyebrow>
               <Heading as="h2" size="xl">
-                Transparentní ceny
+                {t("heading")}
               </Heading>
             </Stack>
           </div>
@@ -40,25 +43,25 @@ export function Pricing() {
                 <Stack gap="xs">
                   {pkg.highlight && (
                     <span className="text-accent text-xs font-medium tracking-[0.2em] uppercase">
-                      Nejoblíbenější
+                      {t("popular")}
                     </span>
                   )}
                   <h3 className="text-foreground font-serif text-xl font-semibold tracking-tight">
-                    {pkg.title}
+                    {t(`packages.${pkg.id}.title`)}
                   </h3>
                   <Text tone="muted" size="sm">
-                    {pkg.description}
+                    {t(`packages.${pkg.id}.description`)}
                   </Text>
                 </Stack>
 
                 <div className="border-border border-t pt-6">
                   <p className="text-foreground font-serif text-3xl font-semibold tracking-tight">
-                    {pkg.price}
+                    {t(`packages.${pkg.id}.price`)}
                   </p>
                 </div>
 
                 <ul className="flex flex-1 flex-col gap-2">
-                  {pkg.features.map((feature) => (
+                  {(t.raw(`packages.${pkg.id}.features`) as string[]).map((feature) => (
                     <li key={feature} className="text-muted flex items-start gap-2 text-sm">
                       <span className="text-accent mt-0.5 select-none" aria-hidden="true">
                         —
@@ -69,14 +72,14 @@ export function Pricing() {
                 </ul>
 
                 <ButtonLink href="/#kontakt" variant={pkg.highlight ? "primary" : "ghost"}>
-                  Nezávazně poptat
+                  {t("enquire")}
                 </ButtonLink>
               </div>
             ))}
           </Reveal>
 
-          {/* Poznámka */}
-          <p className="text-faint max-w-xl text-sm leading-relaxed">{pricingNote}</p>
+          {/* Note */}
+          <p className="text-faint max-w-xl text-sm leading-relaxed">{t("note")}</p>
         </Stack>
       </Container>
     </Section>

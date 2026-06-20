@@ -1,21 +1,26 @@
+import { useTranslations } from "next-intl";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Stack } from "@/components/ui/Stack";
 import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
-import { processSteps } from "@/lib/content";
 import { Reveal } from "@/components/animations/Reveal";
 
+type Step = { title: string; description: string };
+
 export function Process() {
+  const t = useTranslations("process");
+  const steps = t.raw("steps") as Step[];
+
   return (
     <Section className="bg-surface border-border border-t">
       <Container>
         <Stack gap="xl">
-          {/* Záhlaví */}
+          {/* Section header */}
           <div className="max-w-xl">
             <Stack gap="sm">
-              <Eyebrow>Průběh spolupráce</Eyebrow>
+              <Eyebrow>{t("eyebrow")}</Eyebrow>
               <Heading as="h2" size="xl">
-                Jak to funguje
+                {t("heading")}
               </Heading>
             </Stack>
           </div>
@@ -28,11 +33,11 @@ export function Process() {
             stagger={0.1}
             className="border-border grid grid-cols-1 gap-px border md:grid-cols-3"
           >
-            {processSteps.map((step) => (
-              <div key={step.number} className="bg-surface p-8 md:p-10">
+            {steps.map((step, i) => (
+              <div key={i} className="bg-surface p-8 md:p-10">
                 <Stack gap="md">
                   <span className="text-accent font-serif text-4xl font-semibold opacity-60">
-                    {step.number}
+                    {String(i + 1).padStart(2, "0")}
                   </span>
                   <Stack gap="xs">
                     <h3 className="text-foreground font-serif text-xl font-semibold tracking-tight">

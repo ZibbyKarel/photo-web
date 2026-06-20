@@ -1,8 +1,200 @@
 {
+  "common": {
+    "tagline": "Fotograf — Plzeň a okolí"
+  },
   "nav": {
     "gallery": "Galerie",
     "about": "O mně",
     "pricing": "Ceník",
     "contact": "Kontakt"
+  },
+  "a11y": {
+    "openMenu": "Otevřít menu",
+    "closeMenu": "Zavřít menu",
+    "openPhoto": "Otevřít: {alt}",
+    "closeLightbox": "Zavřít lightbox",
+    "prevPhoto": "Předchozí fotografie",
+    "nextPhoto": "Další fotografie"
+  },
+  "hero": {
+    "heading": "Zachytím vaše skutečné okamžiky",
+    "text": "Rodinné focení, svatby a události — i z ptačí perspektivy. Přirozené světlo, skutečné emoce, žádné křečovité pózování.",
+    "ctaPrimary": "Domluvit focení",
+    "ctaSecondary": "Prohlédnout galerii"
+  },
+  "about": {
+    "eyebrow": "O mně",
+    "heading": "Fotografuji to, co se nedá zopakovat",
+    "p1": "Jsem fotograf z Plzně na začátku své cesty — a beru to jako přednost. Svoje jméno si teprve buduji, takže do každého focení dávám naprostou pozornost a energii. Nejste pro mě zakázka v řadě, ale lidé, jejichž okamžik chci zachytit co nejlíp.",
+    "p2": "Nejvíc mě naplňuje rodinné focení — spontánní smích, objetí, pohled, na který se nedá připravit. Fotím venku i v interiéru, ale přirozené světlo je moje doména. Pracuji klidně, bez spěchu, ať se před objektivem cítí každý pohodlně. Vedle rodiny se věnuji i svatebním reportážím, událostem a leteckým záběrům z dronu.",
+    "cta": "Prohlédnout práci",
+    "portraitLabel": "Portrét fotografa"
+  },
+  "process": {
+    "eyebrow": "Průběh spolupráce",
+    "heading": "Jak to funguje",
+    "steps": [
+      {
+        "title": "Napište mi",
+        "description": "Domluvíme se na termínu, místě a vašich představách. Rád zodpovím všechny otázky — stačí napsat nebo zavolat."
+      },
+      {
+        "title": "Focení",
+        "description": "Přijdu s lehkým vybavením a vy se soustředíte jen na sebe. Vedu focení přirozeně — žádné nucené pózy."
+      },
+      {
+        "title": "Výběr",
+        "description": "Náhledy všech fotek pošlu do druhého dne. Vy si jen vyberete, které se Vám líbí a ty následně upravím."
+      },
+      {
+        "title": "Hotové fotky",
+        "description": "Fotky zpracuji a doručím přes online galerii. Ke stažení ve vysokém rozlišení, kdykoli a odkudkoli."
+      }
+    ]
+  },
+  "gallery": {
+    "eyebrow": "Galerie",
+    "previewHeading": "Práce, která mluví za mě",
+    "viewAll": "Zobrazit vše",
+    "backToGallery": "Zpět na galerii",
+    "otherCategories": "Další kategorie",
+    "titleSuffix": "Galerie",
+    "notFound": "Stránka nenalezena",
+    "categories": {
+      "rodina": {
+        "title": "Rodina",
+        "description": "Aranžované u vás doma v improvizovaném ateliéru i venku — krásné fotky vzniknou kdekoliv a s čímkoliv, stačí si s tím dát trochu práce."
+      },
+      "svatby_udalosti": {
+        "title": "Svatby a jiné události",
+        "description": "Svatby, oslavy, křtiny, firemní i společenské akce zachycené v pohybu."
+      },
+      "dron": {
+        "title": "Z dronu",
+        "description": "Letecké snímky — místa a okamžiky z ptačí perspektivy."
+      },
+      "ostatni": {
+        "title": "Ostatní",
+        "description": "Volnější tvorba a momenty, které se nevešly do ostatních kategorií."
+      }
+    }
+  },
+  "pricing": {
+    "eyebrow": "Ceník",
+    "heading": "Transparentní ceny",
+    "popular": "Nejoblíbenější",
+    "enquire": "Nezávazně poptat",
+    "note": "Uvedené ceny jsou zaváděcí — postupně si buduji portfolio a chci, aby kvalitní focení bylo dostupné. Každá zakázka je jiná; nestandardní požadavky nebo kombinaci služeb rád proberu individuálně.",
+    "packages": {
+      "rodina": {
+        "title": "Rodinné focení",
+        "price": "od 1 800 Kč",
+        "description": "Aranžované u vás doma v improvizovaném ateliéru i venku — krásné fotky vzniknou kdekoliv a s čímkoliv, stačí si s tím dát trochu práce.",
+        "features": ["1–1,5 hodiny focení", "Online galerie", "25+ upravených fotek", "Dodání do 10 dnů"]
+      },
+      "svatba": {
+        "title": "Svatba",
+        "price": "od 8 900 Kč",
+        "description": "Reportáž z vašeho svatebního dne.",
+        "features": ["6–8 hodin focení", "300+ upravených fotek", "Online galerie ke stažení", "Konzultace předem"]
+      },
+      "udalost": {
+        "title": "Události",
+        "price": "od 1 500 Kč / hod",
+        "description": "Oslavy, křtiny, firemní i společenské akce.",
+        "features": ["Reportážní focení", "Online galerie", "Dodání do 10 dnů", "Flexibilní délka"]
+      },
+      "dron": {
+        "title": "Z dronu",
+        "price": "od 1 200 Kč",
+        "description": "Letecké snímky samostatně, nebo jako příplatek k jinému focení.",
+        "features": ["Letecké foto z dronu", "Jako doplněk focení od 800 Kč", "Dle počasí a lokality", "Úprava v ceně"]
+      }
+    }
+  },
+  "testimonials": {
+    "eyebrow": "Reference",
+    "heading": "Co říkají klienti",
+    "items": [
+      {
+        "name": "Martina K.",
+        "role": "Rodinné focení",
+        "text": "Focení probíhalo úplně přirozeně a kluci si to dokonce užívali — to by nikdo nečekal. Fotky jsou krásné, plné emocí. Moc děkujeme!"
+      },
+      {
+        "name": "Tomáš a Lucie",
+        "role": "Rodinné focení",
+        "text": "Hledali jsme někoho, kdo nepůsobí jako mašina na focení. Tady jsme to našli. Fotky dorazily rychle a jsou přesně to, co jsme si přáli."
+      },
+      {
+        "name": "Petra a Martin",
+        "role": "Svatba — Plzeň",
+        "text": "Karel zachytil náš den přesně tak, jak jsme si přáli — přirozeně, bez zbytečného organizování. Fotky jsou plné emocí a vracíme se k nim stále znovu. Děkujeme!"
+      }
+    ]
+  },
+  "faq": {
+    "eyebrow": "Otázky a odpovědi",
+    "heading": "Nejčastější otázky",
+    "items": [
+      {
+        "question": "Jak dlouho trvá zpracování fotek?",
+        "answer": "U rodinného focení a akcí do 10 pracovních dnů. U svatební reportáže počítejte se 4–6 týdny — každou fotku pečlivě zpracuji. Pokud potřebujete část fotek dříve, domluvíme se předem."
+      },
+      {
+        "question": "Fotíte venku i uvnitř?",
+        "answer": "Fotím obojí. Rodinné focení preferuji venku pro přirozené světlo, ale doma je to také možné. Svatební den fotím dle programu — ať je to kostel, obřadní síň nebo zahrada. Přizpůsobím se vám."
+      },
+      {
+        "question": "Co si vzít na rodinné focení?",
+        "answer": "Oblečení v tlumených barvách, které vám sluší a cítíte se v něm pohodlně. Vyhněte se křiklavým vzorům a logům. Sladěné — ale ne uniformní — barvy fungují nejlépe. Zbytek nechte na mě."
+      },
+      {
+        "question": "Jak funguje storno?",
+        "answer": "Focení lze přesunout bez poplatku nejpozději 48 hodin předem. V případě nepříznivého počasí termín vždy domluvíme nový. Storno do 24 hodin předem nebo nedostavení se může být zpoplatněno."
+      },
+      {
+        "question": "Nabízíte dárkové poukazy?",
+        "answer": "Ano! Focení jako dárek je skvělý nápad — ať už k narozeninám, Vánocům nebo jen tak. Napište mi a připravím poukaz přesně na míru."
+      },
+      {
+        "question": "Jak probíhá předání fotek?",
+        "answer": "Fotky dostanete přes soukromou online galerii — odkaz přijde e-mailem. Fotky si stáhnete ve vysokém rozlišení, galerie bude aktivní minimálně 3 měsíce."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "heading": "Pojďme se potkat",
+    "intro": "Napište mi a do 48 hodin se ozvu. Rád odpovím na všechny otázky.",
+    "directContact": "Přímý kontakt",
+    "areaLabel": "Oblast působení",
+    "areaText": "Plzeň a okolí — Plzeňský kraj, případně dle dohody.",
+    "responseLabel": "Odezva",
+    "responseText": "Na zprávy odpovídám zpravidla do 24 hodin. V případě urgence volejte."
+  },
+  "contactForm": {
+    "honeypotLabel": "Web (nevyplňujte)",
+    "name": "Jméno a příjmení",
+    "namePlaceholder": "Jan Novák",
+    "phone": "Telefon",
+    "phonePlaceholder": "+420 000 000 000",
+    "email": "E-mail",
+    "emailPlaceholder": "jan@example.cz",
+    "message": "Zpráva",
+    "messagePlaceholder": "Napište mi, co máte v plánu, kdy a kde by se mohlo fotit...",
+    "gdpr": "Souhlasím se zpracováním osobních údajů za účelem odpovědi na moji zprávu. Údaje nebudou předány třetím stranám.",
+    "submit": "Odeslat zprávu",
+    "submitting": "Odesílám…",
+    "successEyebrow": "Odesláno",
+    "successHeading": "Děkuji za zprávu!",
+    "successText": "Ozvu se vám do 48 hodin. Těším se na spolupráci.",
+    "sendAnother": "Odeslat další zprávu"
+  },
+  "footer": {
+    "navLabel": "Navigace",
+    "contactLabel": "Kontakt",
+    "rights": "Všechna práva vyhrazena.",
+    "location": "Plzeň a okolí"
   }
 }

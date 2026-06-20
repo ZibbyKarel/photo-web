@@ -1,19 +1,13 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Stack } from "@/components/ui/Stack";
 import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
-import {
-  getCategorySlugs,
-  getCategory,
-  getPhotosByCategory,
-  categories,
-  type CategorySlug,
-} from "@/lib/gallery";
+import { getCategorySlugs, getPhotosByCategory, categories, isCategorySlug } from "@/lib/gallery";
 import { buildMetadata } from "@/lib/metadata";
 
 type PageProps = {
@@ -25,18 +19,18 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { kategorie } = await params;
-  const cat = getCategory(kategorie as CategorySlug);
+  const { locale, kategorie } = await params;
+  const t = await getTranslations({ locale, namespace: "gallery" });
 
-  if (!cat) {
-    return { title: "Stránka nenalezena" };
+  if (!isCategorySlug(kategorie)) {
+    return { title: t("notFound") };
   }
 
   // buildMetadata handles title (bare, for template), og:title (full), description,
   // canonical URL (prevents canonicalizing category pages to /), and OG/Twitter cards.
   return buildMetadata({
-    title: `${cat.title} — Galerie`,
-    description: cat.description,
+    title: `${t(`categories.${kategorie}.title`)} — ${t("titleSuffix")}`,
+    description: t(`categories.${kategorie}.description`),
     path: `/galerie/${kategorie}`,
   });
 }
@@ -45,14 +39,12 @@ export default async function GalleryCategoryPage({ params }: PageProps) {
   const { locale, kategorie } = await params;
   setRequestLocale(locale);
 
-  // Validate slug
-  const validSlugs = getCategorySlugs();
-  if (!validSlugs.includes(kategorie as CategorySlug)) {
+  if (!isCategorySlug(kategorie)) {
     notFound();
   }
 
-  const slug = kategorie as CategorySlug;
-  const cat = getCategory(slug)!;
+  const slug = kategorie;
+  const t = await getTranslations("gallery");
   const photos = await getPhotosByCategory(slug);
 
   // Other categories for navigation
@@ -82,16 +74,16 @@ export default async function GalleryCategoryPage({ params }: PageProps) {
               >
                 <polyline points="15 18 9 12 15 6" />
               </svg>
-              Zpět na galerii
+              {t("backToGallery")}
             </Link>
 
             <Stack gap="sm">
-              <Eyebrow>Galerie</Eyebrow>
+              <Eyebrow>{t("eyebrow")}</Eyebrow>
               <Heading as="h1" size="xl">
-                {cat.title}
+                {t(`categories.${slug}.title`)}
               </Heading>
               <Text tone="muted" className="max-w-lg">
-                {cat.description}
+                {t(`categories.${slug}.description`)}
               </Text>
             </Stack>
           </Stack>
@@ -111,7 +103,7 @@ export default async function GalleryCategoryPage({ params }: PageProps) {
           <Container>
             <Stack gap="lg">
               <p className="text-muted text-sm font-medium tracking-[0.15em] uppercase">
-                Další kategorie
+                {t("otherCategories")}
               </p>
               <div className="flex flex-wrap gap-4">
                 {otherCategories.map((other) => (
@@ -120,7 +112,7 @@ export default async function GalleryCategoryPage({ params }: PageProps) {
                     href={`/galerie/${other.slug}`}
                     className="border-border-strong hover:border-foreground hover:text-foreground text-muted inline-flex items-center gap-2 border px-5 py-2.5 text-sm transition-colors"
                   >
-                    {other.title}
+                    {t(`categories.${other.slug}.title`)}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="14"

@@ -8,8 +8,8 @@ type PlaceholderProps = {
 };
 
 /**
- * Tonální placeholder blok pro místa budoucích fotografií.
- * Používá inline style pro aspect-ratio, protože dynamické Tailwind třídy nejsou spolehlivé.
+ * Tonal placeholder block standing in for future photographs.
+ * Uses an inline style for aspect-ratio, since dynamic Tailwind classes aren't reliable.
  */
 export function Placeholder({ aspect = "3/4", label, className }: PlaceholderProps) {
   return (

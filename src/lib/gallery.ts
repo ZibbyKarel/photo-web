@@ -25,45 +25,27 @@ export type GalleryPhoto = {
 
 export type GalleryCategory = {
   slug: CategorySlug;
-  title: string;
-  description: string;
 };
 
 /* ---------------------------------------------------------------------------
-   Categories
+   Categories — order + slugs only. Title/description live in messages
+   (gallery.categories.<slug>) and are read via next-intl.
 --------------------------------------------------------------------------- */
 
 export const categories: GalleryCategory[] = [
-  {
-    slug: "rodina",
-    title: "Rodina",
-    description:
-      "Aranžované u vás doma v improvizovaném ateliéru i venku — krásné fotky vzniknou kdekoliv a s čímkoliv, stačí si s tím dát trochu práce.",
-  },
-  {
-    slug: "svatby_udalosti",
-    title: "Svatby a jiné události",
-    description: "Svatby, oslavy, křtiny, firemní i společenské akce zachycené v pohybu.",
-  },
-  {
-    slug: "dron",
-    title: "Z dronu",
-    description: "Letecké snímky — místa a okamžiky z ptačí perspektivy.",
-  },
-  {
-    slug: "ostatni",
-    title: "Ostatní",
-    description: "Volnější tvorba a momenty, které se nevešly do ostatních kategorií.",
-  },
+  { slug: "rodina" },
+  { slug: "svatby_udalosti" },
+  { slug: "dron" },
+  { slug: "ostatni" },
 ] as const;
 
 /* ---------------------------------------------------------------------------
    Helpers
 --------------------------------------------------------------------------- */
 
-/** Returns category metadata by slug, or undefined if not found. */
-export function getCategory(slug: CategorySlug): GalleryCategory | undefined {
-  return categories.find((c) => c.slug === slug);
+/** Returns true if the given string is a known category slug. */
+export function isCategorySlug(slug: string): slug is CategorySlug {
+  return categories.some((c) => c.slug === slug);
 }
 
 /** Returns all category slugs — used for generateStaticParams. */
@@ -87,14 +69,14 @@ function getStaticPhotosByCategory(slug: CategorySlug): GalleryPhoto[] {
 /**
  * Returns all photos for a given category slug, largest first.
  *
- * Fallback: pokud je nastaveno `NEXT_PUBLIC_SANITY_PROJECT_ID`, čte ze Sanity;
- * jinak vrací statická data jako dosud. Async kvůli Sanity fetch.
+ * Fallback: when `NEXT_PUBLIC_SANITY_PROJECT_ID` is set, reads from Sanity;
+ * otherwise returns the static data. Async because of the Sanity fetch.
  */
 export async function getPhotosByCategory(slug: CategorySlug): Promise<GalleryPhoto[]> {
   if (isSanityConfigured) {
     const { fetchPhotosByCategory } = await import("@/sanity/data");
     const photos = await fetchPhotosByCategory(slug);
-    // Bezpečnostní fallback: prázdný dataset → statický obsah.
+    // Safety fallback: empty dataset → static content.
     if (photos.length > 0) return sortByLargestFirst(photos);
   }
   return sortByLargestFirst(getStaticPhotosByCategory(slug));

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Stack } from "@/components/ui/Stack";
@@ -13,7 +14,8 @@ import { Reveal } from "@/components/animations/Reveal";
  * Server component — Reveal client wrappers are fine inside RSC.
  */
 export async function GalleryPreview() {
-  // Fotky pro každou kategorii vyřešíme dopředu (nelze awaitovat uvnitř .map render).
+  const t = await getTranslations("gallery");
+  // Resolve photos for each category upfront (cannot await inside the .map render).
   const previewsByCat = await Promise.all(categories.map((cat) => getPreviewPhotos(cat.slug, 4)));
 
   return (
@@ -23,9 +25,9 @@ export async function GalleryPreview() {
           {/* Section header */}
           <div className="max-w-xl">
             <Stack gap="sm">
-              <Eyebrow>Galerie</Eyebrow>
+              <Eyebrow>{t("eyebrow")}</Eyebrow>
               <Heading as="h2" size="xl">
-                Práce, která mluví za mě
+                {t("previewHeading")}
               </Heading>
             </Stack>
           </div>
@@ -41,10 +43,10 @@ export async function GalleryPreview() {
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                       <Stack gap="xs">
                         <h3 className="text-foreground font-serif text-2xl font-semibold tracking-tight md:text-3xl">
-                          {cat.title}
+                          {t(`categories.${cat.slug}.title`)}
                         </h3>
                         <Text tone="muted" size="sm" className="max-w-md">
-                          {cat.description}
+                          {t(`categories.${cat.slug}.description`)}
                         </Text>
                       </Stack>
                       <ButtonLink
@@ -52,7 +54,7 @@ export async function GalleryPreview() {
                         variant="ghost"
                         className="shrink-0 self-start sm:self-auto"
                       >
-                        Zobrazit vše
+                        {t("viewAll")}
                       </ButtonLink>
                     </div>
 

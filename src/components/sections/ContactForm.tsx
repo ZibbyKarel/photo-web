@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 import { Stack } from "@/components/ui/Stack";
 import { Button } from "@/components/ui/Button";
 import { useContactForm } from "@/hooks/useContactForm";
@@ -20,6 +21,7 @@ function FieldError({ id, messages }: { id: string; messages?: string[] }) {
 }
 
 export function ContactForm() {
+  const t = useTranslations("contactForm");
   const formRef = useRef<HTMLFormElement>(null);
   const { status, fieldErrors, errorMessage, submit, reset } = useContactForm();
 
@@ -56,13 +58,15 @@ export function ContactForm() {
         className="border-border bg-surface rounded-none border p-8 text-center"
       >
         <Stack gap="md" align="center">
-          <p className="text-accent text-sm font-medium tracking-[0.2em] uppercase">Odesláno</p>
-          <p className="text-foreground font-serif text-2xl font-semibold">Děkuji za zprávu!</p>
-          <p className="text-muted text-sm leading-relaxed">
-            Ozvu se vám do 48 hodin. Těším se na spolupráci.
+          <p className="text-accent text-sm font-medium tracking-[0.2em] uppercase">
+            {t("successEyebrow")}
           </p>
+          <p className="text-foreground font-serif text-2xl font-semibold">
+            {t("successHeading")}
+          </p>
+          <p className="text-muted text-sm leading-relaxed">{t("successText")}</p>
           <Button type="button" variant="ghost" size="md" onClick={handleReset} className="mt-2">
-            Odeslat další zprávu
+            {t("sendAnother")}
           </Button>
         </Stack>
       </div>
@@ -78,16 +82,16 @@ export function ContactForm() {
         void handleSubmit(e);
       }}
     >
-      {/* Honeypot — skryté před uživatelem, viditelné pro boty */}
+      {/* Honeypot — hidden from users, visible to bots */}
       <div className="sr-only" aria-hidden="true">
-        <label htmlFor="contact-website">Web (nevyplňujte)</label>
+        <label htmlFor="contact-website">{t("honeypotLabel")}</label>
         <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="contact-name" className={labelClass}>
-            Jméno a příjmení
+            {t("name")}
             <span className="text-accent ml-1" aria-hidden="true">
               *
             </span>
@@ -98,7 +102,7 @@ export function ContactForm() {
             type="text"
             autoComplete="name"
             required
-            placeholder="Jan Novák"
+            placeholder={t("namePlaceholder")}
             className={inputClass}
             aria-invalid={!!fieldErrors.name?.length}
             aria-describedby={fieldErrors.name?.length ? "error-name" : undefined}
@@ -107,14 +111,14 @@ export function ContactForm() {
         </div>
         <div>
           <label htmlFor="contact-phone" className={labelClass}>
-            Telefon
+            {t("phone")}
           </label>
           <input
             id="contact-phone"
             name="phone"
             type="tel"
             autoComplete="tel"
-            placeholder="+420 000 000 000"
+            placeholder={t("phonePlaceholder")}
             className={inputClass}
             aria-invalid={!!fieldErrors.phone?.length}
             aria-describedby={fieldErrors.phone?.length ? "error-phone" : undefined}
@@ -125,7 +129,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="contact-email" className={labelClass}>
-          E-mail
+          {t("email")}
           <span className="text-accent ml-1" aria-hidden="true">
             *
           </span>
@@ -136,7 +140,7 @@ export function ContactForm() {
           type="email"
           autoComplete="email"
           required
-          placeholder="jan@example.cz"
+          placeholder={t("emailPlaceholder")}
           className={inputClass}
           aria-invalid={!!fieldErrors.email?.length}
           aria-describedby={fieldErrors.email?.length ? "error-email" : undefined}
@@ -146,7 +150,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="contact-message" className={labelClass}>
-          Zpráva
+          {t("message")}
           <span className="text-accent ml-1" aria-hidden="true">
             *
           </span>
@@ -156,7 +160,7 @@ export function ContactForm() {
           name="message"
           required
           rows={5}
-          placeholder="Napište mi, co máte v plánu, kdy a kde by se mohlo fotit..."
+          placeholder={t("messagePlaceholder")}
           className={inputClass}
           aria-invalid={!!fieldErrors.message?.length}
           aria-describedby={fieldErrors.message?.length ? "error-message" : undefined}
@@ -177,14 +181,13 @@ export function ContactForm() {
         />
         <div>
           <label htmlFor="contact-gdpr" className="text-muted text-xs leading-relaxed">
-            Souhlasím se zpracováním osobních údajů za účelem odpovědi na moji zprávu. Údaje nebudou
-            předány třetím stranám.
+            {t("gdpr")}
           </label>
           <FieldError id="error-gdpr" messages={fieldErrors.gdpr} />
         </div>
       </div>
 
-      {/* Obecná chybová hláška */}
+      {/* General error message */}
       {status === "error" && errorMessage && (
         <div role="alert" aria-live="assertive" className="border-accent/30 bg-surface border p-4">
           <p className="text-muted text-sm">{errorMessage}</p>
@@ -198,7 +201,7 @@ export function ContactForm() {
         disabled={isSubmitting}
         aria-disabled={isSubmitting}
       >
-        {isSubmitting ? "Odesílám…" : "Odeslat zprávu"}
+        {isSubmitting ? t("submitting") : t("submit")}
       </Button>
     </form>
   );

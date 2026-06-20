@@ -1,8 +1,200 @@
 {
+  "common": {
+    "tagline": "Photographer — Plzeň & surroundings"
+  },
   "nav": {
     "gallery": "Gallery",
     "about": "About",
     "pricing": "Pricing",
     "contact": "Contact"
+  },
+  "a11y": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "openPhoto": "Open: {alt}",
+    "closeLightbox": "Close lightbox",
+    "prevPhoto": "Previous photo",
+    "nextPhoto": "Next photo"
+  },
+  "hero": {
+    "heading": "Capturing your real moments",
+    "text": "Family sessions, weddings and events — even from a bird's-eye view. Natural light, genuine emotion, no stiff posing.",
+    "ctaPrimary": "Book a session",
+    "ctaSecondary": "View the gallery"
+  },
+  "about": {
+    "eyebrow": "About me",
+    "heading": "I photograph what can't be repeated",
+    "p1": "I'm a photographer from Plzeň at the start of my journey — and I see that as a strength. I'm still building my name, so I pour my full attention and energy into every shoot. You're not just another booking in the queue; you're people whose moment I want to capture as well as I possibly can.",
+    "p2": "Family photography is what fulfils me most — spontaneous laughter, a hug, a look you can't pose for. I shoot both outdoors and indoors, but natural light is my domain. I work calmly and without rush, so everyone feels at ease in front of the lens. Alongside families, I also cover wedding reportage, events and aerial drone shots.",
+    "cta": "See my work",
+    "portraitLabel": "Photographer portrait"
+  },
+  "process": {
+    "eyebrow": "How we work together",
+    "heading": "How it works",
+    "steps": [
+      {
+        "title": "Get in touch",
+        "description": "We'll agree on a date, a place and your ideas. I'm happy to answer any questions — just write or call."
+      },
+      {
+        "title": "The shoot",
+        "description": "I arrive with light gear and you focus on nothing but yourselves. I guide the session naturally — no forced poses."
+      },
+      {
+        "title": "Your selection",
+        "description": "I send previews of every photo by the next day. You simply pick the ones you like and I edit those."
+      },
+      {
+        "title": "Finished photos",
+        "description": "I process and deliver your photos through an online gallery. Download them in high resolution, anytime and anywhere."
+      }
+    ]
+  },
+  "gallery": {
+    "eyebrow": "Gallery",
+    "previewHeading": "Work that speaks for me",
+    "viewAll": "View all",
+    "backToGallery": "Back to the gallery",
+    "otherCategories": "Other categories",
+    "titleSuffix": "Gallery",
+    "notFound": "Page not found",
+    "categories": {
+      "rodina": {
+        "title": "Family",
+        "description": "Set up at your home in an improvised studio or outdoors — beautiful photos can happen anywhere, with anything, you just have to put a little work into it."
+      },
+      "svatby_udalosti": {
+        "title": "Weddings & other events",
+        "description": "Weddings, celebrations, christenings, corporate and social events captured in motion."
+      },
+      "dron": {
+        "title": "From the drone",
+        "description": "Aerial shots — places and moments from a bird's-eye view."
+      },
+      "ostatni": {
+        "title": "Other",
+        "description": "Freer work and moments that didn't fit into the other categories."
+      }
+    }
+  },
+  "pricing": {
+    "eyebrow": "Pricing",
+    "heading": "Transparent pricing",
+    "popular": "Most popular",
+    "enquire": "Enquire — no obligation",
+    "note": "These are introductory prices — I'm gradually building my portfolio and want quality photography to be accessible. Every job is different; I'm happy to discuss non-standard requests or a combination of services individually.",
+    "packages": {
+      "rodina": {
+        "title": "Family session",
+        "price": "from 1,800 CZK",
+        "description": "Set up at your home in an improvised studio or outdoors — beautiful photos can happen anywhere, with anything, you just have to put a little work into it.",
+        "features": ["1–1.5 hours of shooting", "Online gallery", "25+ edited photos", "Delivery within 10 days"]
+      },
+      "svatba": {
+        "title": "Wedding",
+        "price": "from 8,900 CZK",
+        "description": "Reportage of your wedding day.",
+        "features": ["6–8 hours of shooting", "300+ edited photos", "Online gallery to download", "Consultation beforehand"]
+      },
+      "udalost": {
+        "title": "Events",
+        "price": "from 1,500 CZK / hour",
+        "description": "Celebrations, christenings, corporate and social events.",
+        "features": ["Reportage shooting", "Online gallery", "Delivery within 10 days", "Flexible length"]
+      },
+      "dron": {
+        "title": "From the drone",
+        "price": "from 1,200 CZK",
+        "description": "Aerial shots on their own, or as an add-on to another shoot.",
+        "features": ["Aerial drone photo", "As a shoot add-on from 800 CZK", "Subject to weather and location", "Editing included"]
+      }
+    }
+  },
+  "testimonials": {
+    "eyebrow": "Testimonials",
+    "heading": "What clients say",
+    "items": [
+      {
+        "name": "Martina K.",
+        "role": "Family session",
+        "text": "The shoot felt completely natural and the boys even enjoyed it — no one expected that. The photos are beautiful and full of emotion. Thank you so much!"
+      },
+      {
+        "name": "Tomáš & Lucie",
+        "role": "Family session",
+        "text": "We were looking for someone who doesn't feel like a photo machine. We found exactly that here. The photos arrived quickly and are precisely what we wanted."
+      },
+      {
+        "name": "Petra & Martin",
+        "role": "Wedding — Plzeň",
+        "text": "Karel captured our day exactly as we'd hoped — naturally, without unnecessary staging. The photos are full of emotion and we keep coming back to them. Thank you!"
+      }
+    ]
+  },
+  "faq": {
+    "eyebrow": "Questions & answers",
+    "heading": "Frequently asked questions",
+    "items": [
+      {
+        "question": "How long does editing take?",
+        "answer": "For family sessions and events, within 10 working days. For wedding reportage, expect 4–6 weeks — I carefully process every photo. If you need some of the photos sooner, we'll arrange it in advance."
+      },
+      {
+        "question": "Do you shoot outdoors and indoors?",
+        "answer": "I shoot both. For family sessions I prefer outdoors for the natural light, but at home works too. I shoot a wedding day according to the schedule — be it a church, a registry office or a garden. I'll adapt to you."
+      },
+      {
+        "question": "What should I wear for a family session?",
+        "answer": "Clothing in muted colours that suits you and feels comfortable. Avoid loud patterns and logos. Coordinated — but not uniform — colours work best. Leave the rest to me."
+      },
+      {
+        "question": "How does cancellation work?",
+        "answer": "A shoot can be rescheduled free of charge up to 48 hours in advance. In case of bad weather, we'll always set a new date. Cancellation within 24 hours or a no-show may be charged."
+      },
+      {
+        "question": "Do you offer gift vouchers?",
+        "answer": "Yes! A photo session makes a great gift — for a birthday, Christmas or just because. Write to me and I'll prepare a voucher tailored exactly to you."
+      },
+      {
+        "question": "How are the photos handed over?",
+        "answer": "You'll receive the photos through a private online gallery — the link arrives by email. You download them in high resolution, and the gallery stays active for at least 3 months."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "heading": "Let's meet",
+    "intro": "Write to me and I'll get back to you within 48 hours. I'm happy to answer any questions.",
+    "directContact": "Direct contact",
+    "areaLabel": "Where I work",
+    "areaText": "Plzeň and surroundings — the Plzeň Region, or further afield by arrangement.",
+    "responseLabel": "Response time",
+    "responseText": "I usually reply to messages within 24 hours. For anything urgent, please call."
+  },
+  "contactForm": {
+    "honeypotLabel": "Website (leave blank)",
+    "name": "Full name",
+    "namePlaceholder": "John Smith",
+    "phone": "Phone",
+    "phonePlaceholder": "+420 000 000 000",
+    "email": "Email",
+    "emailPlaceholder": "john@example.com",
+    "message": "Message",
+    "messagePlaceholder": "Tell me what you have in mind, when and where the shoot could happen...",
+    "gdpr": "I consent to the processing of my personal data for the purpose of responding to my message. The data will not be shared with third parties.",
+    "submit": "Send message",
+    "submitting": "Sending…",
+    "successEyebrow": "Sent",
+    "successHeading": "Thank you for your message!",
+    "successText": "I'll get back to you within 48 hours. I'm looking forward to working together.",
+    "sendAnother": "Send another message"
+  },
+  "footer": {
+    "navLabel": "Navigation",
+    "contactLabel": "Contact",
+    "rights": "All rights reserved.",
+    "location": "Plzeň & surroundings"
   }
 }

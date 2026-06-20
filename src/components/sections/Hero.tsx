@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
 import { ButtonLink } from "@/components/ui/Button";
@@ -9,9 +10,12 @@ const HERO_BLUR =
   "data:image/jpeg;base64,/9j/2wBDAA4KCw0LCQ4NDA0QDw4RFiQXFhQUFiwgIRokNC43NjMuMjI6QVNGOj1OPjIySGJJTlZYXV5dOEVmbWVabFNbXVn/2wBDAQ8QEBYTFioXFypZOzI7WVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVn/wAARCAALABADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABgX/xAAgEAACAQQBBQAAAAAAAAAAAAABAgMABAURBhIxUZGS/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAXEQADAQAAAAAAAAAAAAAAAAAAAQIR/9oADAMBAAIRAxEAPwApjb9La4WUopI8ikmU5JHNZGIICe2yNj3QXdW8goTDQFRrqYE/NS50VWH/2Q==";
 
 export function Hero() {
+  const t = useTranslations("hero");
+  const tc = useTranslations("common");
+
   return (
     <section className="relative flex min-h-svh items-end pt-16 pb-20 md:items-center md:pb-0">
-      {/* Pozadí — titulní fotografie s parallaxem */}
+      {/* Background — hero photo with parallax */}
       <Parallax amount={12} className="absolute inset-0">
         <Image
           src="/hero.jpg"
@@ -23,12 +27,12 @@ export function Hero() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        {/* Gradient overlays pro čitelnost textu (zespodu + zleva) */}
+        {/* Gradient overlays for text legibility (bottom + left) */}
         <div className="from-background via-background/65 to-background/25 absolute inset-0 bg-gradient-to-t" />
         <div className="from-background/85 absolute inset-0 bg-gradient-to-r to-transparent md:to-40%" />
       </Parallax>
 
-      {/* Obsah */}
+      {/* Content */}
       <Container className="relative z-10">
         {/*
          * Reveal replaces the Stack here so it is the DIRECT parent of the
@@ -40,20 +44,19 @@ export function Hero() {
           start="top 90%"
           className="flex max-w-3xl flex-col items-start gap-8 py-20 md:py-28"
         >
-          <Eyebrow>Fotograf — Plzeň a okolí</Eyebrow>
+          <Eyebrow>{tc("tagline")}</Eyebrow>
           <Heading as="h1" size="display">
-            Zachytím vaše skutečné okamžiky
+            {t("heading")}
           </Heading>
           <Text size="lg" tone="muted" className="max-w-xl">
-            Rodinné focení, svatby a události — i z ptačí perspektivy. Přirozené světlo, skutečné
-            emoce, žádné křečovité pózování.
+            {t("text")}
           </Text>
           <div className="flex flex-wrap gap-4 pt-2">
             <ButtonLink href="/#kontakt" size="lg">
-              Domluvit focení
+              {t("ctaPrimary")}
             </ButtonLink>
             <ButtonLink href="/#galerie" variant="ghost" size="lg">
-              Prohlédnout galerii
+              {t("ctaSecondary")}
             </ButtonLink>
           </div>
         </Reveal>

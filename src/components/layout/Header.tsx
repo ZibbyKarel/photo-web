@@ -11,6 +11,7 @@ import { MobileMenu } from "./MobileMenu";
 export function Header() {
   const scrolled = useScrolled();
   const t = useTranslations("nav");
+  const ta = useTranslations("a11y");
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -23,8 +24,8 @@ export function Header() {
           : "border-b border-transparent",
       )}
     >
-      {/* Tmavý scrim nahoře — drží logo i menu čitelné nad světlou hero fotkou,
-          dokud uživatel neodscrolluje (pak nastoupí rozmazané pozadí výše). */}
+      {/* Dark scrim at the top — keeps the logo and menu legible over the light
+          hero photo until the user scrolls (then the blurred background takes over). */}
       <div
         aria-hidden="true"
         className={cn(
@@ -62,7 +63,7 @@ export function Header() {
         <button
           type="button"
           className="relative z-50 flex h-10 w-10 items-center justify-center md:hidden"
-          aria-label={menuOpen ? "Zavřít menu" : "Otevřít menu"}
+          aria-label={menuOpen ? ta("closeMenu") : ta("openMenu")}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
           onClick={() => setMenuOpen((v) => !v)}

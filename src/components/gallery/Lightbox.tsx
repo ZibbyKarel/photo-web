@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import type { GalleryPhoto } from "@/lib/gallery";
 
 type LightboxProps = {
@@ -20,6 +21,7 @@ type LightboxProps = {
 export function Lightbox({ photos, currentIndex, onClose, onNext, onPrev }: LightboxProps) {
   const photo = photos[currentIndex];
   const total = photos.length;
+  const ta = useTranslations("a11y");
 
   // Arrow key navigation (Escape is handled in useLightbox)
   useEffect(() => {
@@ -52,7 +54,7 @@ export function Lightbox({ photos, currentIndex, onClose, onNext, onPrev }: Ligh
         {/* Close button */}
         <button
           onClick={onClose}
-          aria-label="Zavřít lightbox"
+          aria-label={ta("closeLightbox")}
           className="absolute top-4 right-4 flex h-10 w-10 items-center justify-center text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           <svg
@@ -75,7 +77,7 @@ export function Lightbox({ photos, currentIndex, onClose, onNext, onPrev }: Ligh
         {/* Previous button */}
         <button
           onClick={onPrev}
-          aria-label="Předchozí fotografie"
+          aria-label={ta("prevPhoto")}
           className="absolute top-1/2 left-2 flex h-12 w-12 -translate-y-1/2 items-center justify-center text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:left-4"
         >
           <svg
@@ -97,7 +99,7 @@ export function Lightbox({ photos, currentIndex, onClose, onNext, onPrev }: Ligh
         {/* Next button */}
         <button
           onClick={onNext}
-          aria-label="Další fotografie"
+          aria-label={ta("nextPhoto")}
           className="absolute top-1/2 right-2 flex h-12 w-12 -translate-y-1/2 items-center justify-center text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:right-4"
         >
           <svg

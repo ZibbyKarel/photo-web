@@ -1,6 +1,6 @@
 /**
- * Single source of truth for site-wide content & contact details.
- * TODO: nahradit skutečným jménem / brandingem a kontakty (viz docs/plans, otevřená otázka #1).
+ * Single source of truth for site-wide contact details and brand facts.
+ * Locale-dependent copy (tagline, description, nav labels) lives in messages/.
  */
 export const site = {
   name: "Karel Zíbar",

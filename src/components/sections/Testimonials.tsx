@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Stack } from "@/components/ui/Stack";
@@ -5,27 +6,32 @@ import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
 import { Placeholder } from "@/components/ui/Placeholder";
 import { getTestimonials } from "@/lib/content";
 
+type TestimonialItem = { name: string; role: string; text: string };
+
 export async function Testimonials() {
-  const testimonials = await getTestimonials();
+  const t = await getTranslations("testimonials");
+  // Prefer Sanity content when available; otherwise use the localized fallback.
+  const fromSanity = await getTestimonials();
+  const testimonials: TestimonialItem[] = fromSanity ?? (t.raw("items") as TestimonialItem[]);
 
   return (
     <Section className="bg-surface border-border border-t">
       <Container>
         <Stack gap="xl">
-          {/* Záhlaví */}
+          {/* Section header */}
           <div className="max-w-xl">
             <Stack gap="sm">
-              <Eyebrow>Reference</Eyebrow>
+              <Eyebrow>{t("eyebrow")}</Eyebrow>
               <Heading as="h2" size="xl">
-                Co říkají klienti
+                {t("heading")}
               </Heading>
             </Stack>
           </div>
 
-          {/* Citace */}
+          {/* Quotes */}
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {testimonials.map((item) => (
-              <figure key={item.id} className="flex flex-col gap-6">
+            {testimonials.map((item, i) => (
+              <figure key={i} className="flex flex-col gap-6">
                 <blockquote>
                   <Text tone="muted" className="leading-loose italic">
                     &ldquo;{item.text}&rdquo;
