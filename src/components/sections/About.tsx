@@ -1,10 +1,10 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Stack } from "@/components/ui/Stack";
 import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
 import { ButtonLink } from "@/components/ui/Button";
-import { Placeholder } from "@/components/ui/Placeholder";
 
 export function About() {
   const t = useTranslations("about");
@@ -15,11 +15,15 @@ export function About() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 lg:gap-24">
           {/* Portrait */}
           <div className="order-2 md:order-1">
-            <Placeholder
-              aspect="4/5"
-              label={t("portraitLabel")}
-              className="w-full max-w-sm md:max-w-none"
-            />
+            <div className="bg-surface relative aspect-4/5 w-full max-w-sm overflow-hidden md:max-w-none">
+              <Image
+                src="/me.png"
+                alt={t("portraitLabel")}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover object-center"
+              />
+            </div>
           </div>
 
           {/* Text */}

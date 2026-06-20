@@ -47,9 +47,7 @@ export function Header() {
           >
             <Logo priority className="mt-10 h-18 w-18 md:h-20 md:w-20" />
             <span aria-hidden="true" className="bg-border-strong hidden h-7 w-px sm:block" />
-            <span className={titleClasses("none", "hidden text-base sm:inline md:text-lg")}>
-              {site.name}
-            </span>
+            <span className={titleClasses("2xl", "sm:inline")}>{site.name}</span>
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
