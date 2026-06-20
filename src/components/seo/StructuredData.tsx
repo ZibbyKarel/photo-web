@@ -1,31 +1,37 @@
+import { getTranslations } from "next-intl/server";
 import { site } from "@/lib/site";
+import type { Locale } from "@/i18n/routing";
 
 /**
  * JSON-LD structured data for LocalBusiness / ProfessionalService.
  * ProfessionalService is a sub-type of LocalBusiness and the appropriate
  * schema.org type for a photographer offering paid services.
- * Rendered as a <script> in <body> (inside root layout).
+ * Names/descriptions are pulled from the localized pricing messages.
  */
-export function StructuredData() {
+const OFFERS = [
+  { id: "family", price: "1800" },
+  { id: "wedding", price: "8900" },
+  { id: "event", price: "1500" },
+  { id: "drone", price: "1200" },
+] as const;
+
+export async function StructuredData({ locale }: { locale: Locale }) {
+  const t = await getTranslations({ locale, namespace: "pricing" });
+  const tm = await getTranslations({ locale, namespace: "meta" });
+
   const data = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: site.name,
-    description: site.description,
+    description: tm("description"),
     url: site.url,
     email: site.email,
     telephone: site.phone,
     image: `${site.url}/opengraph-image`,
     priceRange: "$$",
     areaServed: [
-      {
-        "@type": "City",
-        name: "Plzeň",
-      },
-      {
-        "@type": "AdministrativeArea",
-        name: "Plzeňský kraj",
-      },
+      { "@type": "City", name: "Plzeň" },
+      { "@type": "AdministrativeArea", name: "Plzeňský kraj" },
     ],
     address: {
       "@type": "PostalAddress",
@@ -33,82 +39,23 @@ export function StructuredData() {
       addressCountry: "CZ",
     },
     sameAs: [site.instagram],
-    knowsAbout: [
-      "Rodinné focení",
-      "Svatební fotografie",
-      "Focení událostí",
-      "Letecká fotografie z dronu",
-    ],
-    makesOffer: [
-      {
-        "@type": "Offer",
-        name: "Rodinné focení",
-        description:
-          "Uvolněné focení rodiny doma nebo venku. Přirozené světlo, spontánní okamžiky. Dodání online galerie do 10 dnů.",
+    knowsAbout: OFFERS.map((o) => t(`packages.${o.id}.title`)),
+    makesOffer: OFFERS.map((o) => ({
+      "@type": "Offer",
+      name: t(`packages.${o.id}.title`),
+      description: t(`packages.${o.id}.description`),
+      priceCurrency: "CZK",
+      price: o.price,
+      priceSpecification: {
+        "@type": "PriceSpecification",
         priceCurrency: "CZK",
-        price: "1800",
-        priceSpecification: {
-          "@type": "PriceSpecification",
-          priceCurrency: "CZK",
-          minPrice: "1800",
-        },
-        areaServed: {
-          "@type": "City",
-          name: "Plzeň",
-        },
+        minPrice: o.price,
       },
-      {
-        "@type": "Offer",
-        name: "Svatba",
-        description:
-          "Reportáž z celého svatebního dne. 6–8 hodin focení, 300+ upravených fotek, online galerie ke stažení.",
-        priceCurrency: "CZK",
-        price: "8900",
-        priceSpecification: {
-          "@type": "PriceSpecification",
-          priceCurrency: "CZK",
-          minPrice: "8900",
-        },
-        areaServed: {
-          "@type": "City",
-          name: "Plzeň",
-        },
+      areaServed: {
+        "@type": "City",
+        name: "Plzeň",
       },
-      {
-        "@type": "Offer",
-        name: "Události",
-        description:
-          "Focení oslav, křtin, firemních i společenských akcí. Reportážní styl, dodání do 10 dnů.",
-        priceCurrency: "CZK",
-        price: "1500",
-        priceSpecification: {
-          "@type": "PriceSpecification",
-          priceCurrency: "CZK",
-          minPrice: "1500",
-        },
-        areaServed: {
-          "@type": "City",
-          name: "Plzeň",
-        },
-      },
-      {
-        "@type": "Offer",
-        name: "Z dronu",
-        description:
-          "Letecké snímky z dronu — samostatně nebo jako doplněk k focení. Dle počasí a lokality.",
-        priceCurrency: "CZK",
-        price: "1500",
-        priceSpecification: {
-          "@type": "PriceSpecification",
-          priceCurrency: "CZK",
-          minPrice: "1500",
-        },
-        areaServed: {
-          "@type": "City",
-          name: "Plzeň",
-        },
-      },
-    ],
+    })),
   };
 
   return (

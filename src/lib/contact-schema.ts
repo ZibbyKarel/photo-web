@@ -1,26 +1,30 @@
 import { z } from "zod";
 
-export const contactSchema = z.object({
-  name: z
-    .string()
-    .min(2, "Jméno musí mít alespoň 2 znaky.")
-    .max(100, "Jméno může mít nejvýše 100 znaků."),
+/** A translator scoped to the `contactForm.errors` namespace. */
+type ErrorTranslator = (key: string) => string;
 
-  email: z.email("Zadejte platnou e-mailovou adresu."),
+/**
+ * Builds the contact schema with localized validation messages. Pass a
+ * translator from the active locale (client: useTranslations; server:
+ * getTranslations) so errors are shown in the visitor's language.
+ */
+export function createContactSchema(t: ErrorTranslator) {
+  return z.object({
+    name: z.string().min(2, t("nameMin")).max(100, t("nameMax")),
 
-  phone: z.string().optional(),
+    email: z.email(t("emailInvalid")),
 
-  message: z
-    .string()
-    .min(10, "Zpráva musí mít alespoň 10 znaků.")
-    .max(2000, "Zpráva může mít nejvýše 2 000 znaků."),
+    phone: z.string().optional(),
 
-  gdpr: z.literal(true, {
-    error: "Je třeba souhlas se zpracováním údajů.",
-  }),
+    message: z.string().min(10, t("messageMin")).max(2000, t("messageMax")),
 
-  /** Honeypot — musí zůstat prázdný; boti ho obvykle vyplní. */
-  website: z.string().optional(),
-});
+    gdpr: z.literal(true, {
+      error: t("gdpr"),
+    }),
 
-export type ContactInput = z.infer<typeof contactSchema>;
+    /** Honeypot — must stay empty; bots usually fill it in. */
+    website: z.string().optional(),
+  });
+}
+
+export type ContactInput = z.infer<ReturnType<typeof createContactSchema>>;

@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
 import { site } from "@/lib/site";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 type MobileMenuProps = {
   open: boolean;
@@ -46,6 +47,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             {t(item.id)}
           </Link>
         ))}
+        <LanguageSwitcher size="lg" className="mt-4" />
       </nav>
     </div>
   );

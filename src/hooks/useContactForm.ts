@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { contactSchema } from "@/lib/contact-schema";
+import { useLocale, useTranslations } from "next-intl";
+import { createContactSchema } from "@/lib/contact-schema";
 
 export type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -16,6 +17,8 @@ export interface UseContactFormReturn {
 }
 
 export function useContactForm(): UseContactFormReturn {
+  const t = useTranslations("contactForm");
+  const locale = useLocale();
   const [status, setStatus] = useState<FormStatus>("idle");
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -32,7 +35,8 @@ export function useContactForm(): UseContactFormReturn {
     setErrorMessage(null);
 
     // Client-side validation (fast feedback, no network round-trip needed)
-    const result = contactSchema.safeParse(data);
+    const schema = createContactSchema((key) => t(`errors.${key}`));
+    const result = schema.safeParse(data);
     if (!result.success) {
       setFieldErrors(result.error.flatten().fieldErrors as FieldErrors);
       return;
@@ -44,7 +48,7 @@ export function useContactForm(): UseContactFormReturn {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, locale }),
       });
 
       const json = (await response.json()) as {
@@ -57,19 +61,14 @@ export function useContactForm(): UseContactFormReturn {
         if (json.errors) {
           setFieldErrors(json.errors);
         }
-        setErrorMessage(
-          json.error ??
-            "Odeslání se nezdařilo. Zkuste to prosím znovu nebo napište přímo na e-mail.",
-        );
+        setErrorMessage(json.error ?? t("formError.failed"));
         setStatus("error");
         return;
       }
 
       setStatus("success");
     } catch {
-      setErrorMessage(
-        "Nepodařilo se spojit se serverem. Zkontrolujte připojení a zkuste to znovu.",
-      );
+      setErrorMessage(t("formError.network"));
       setStatus("error");
     }
   }

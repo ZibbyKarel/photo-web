@@ -1,27 +1,30 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/lib/site";
 import { getCategorySlugs } from "@/lib/gallery";
+import { routing } from "@/i18n/routing";
+import { localizedUrl, languageAlternates } from "@/lib/metadata";
 
 // Static date for deterministic builds — update on major content changes.
 const LAST_MODIFIED = new Date("2026-01-01");
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const categorySlugs = getCategorySlugs();
-
-  const categoryEntries: MetadataRoute.Sitemap = categorySlugs.map((slug) => ({
-    url: `${site.url}/gallery/${slug}`,
+/** One sitemap entry per (locale, path), each carrying hreflang alternates. */
+function entriesForPath(
+  path: string,
+  changeFrequency: "weekly" | "monthly",
+  priority: number,
+): MetadataRoute.Sitemap {
+  const languages = languageAlternates(path);
+  return routing.locales.map((locale) => ({
+    url: localizedUrl(locale, path),
     lastModified: LAST_MODIFIED,
-    changeFrequency: "monthly",
-    priority: 0.8,
+    changeFrequency,
+    priority,
+    alternates: { languages },
   }));
+}
 
+export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    {
-      url: site.url,
-      lastModified: LAST_MODIFIED,
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    ...categoryEntries,
+    ...entriesForPath("", "weekly", 1),
+    ...getCategorySlugs().flatMap((slug) => entriesForPath(`/gallery/${slug}`, "monthly", 0.8)),
   ];
 }

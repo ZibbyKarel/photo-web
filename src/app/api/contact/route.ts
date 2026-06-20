@@ -1,4 +1,7 @@
-import { contactSchema } from "@/lib/contact-schema";
+import { hasLocale } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { routing } from "@/i18n/routing";
+import { createContactSchema } from "@/lib/contact-schema";
 
 export async function POST(request: Request) {
   // 1. Parse JSON body
@@ -6,11 +9,17 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch {
-    return Response.json({ error: "Neplatný požadavek." }, { status: 400 });
+    const t = await getTranslations({ locale: routing.defaultLocale, namespace: "contactForm" });
+    return Response.json({ error: t("formError.invalidRequest") }, { status: 400 });
   }
 
-  // 2. Validate via shared schema
-  const result = contactSchema.safeParse(body);
+  // Resolve the visitor's locale (sent by the client) for localized responses.
+  const sentLocale = (body as { locale?: unknown })?.locale;
+  const locale = hasLocale(routing.locales, sentLocale) ? sentLocale : routing.defaultLocale;
+  const t = await getTranslations({ locale, namespace: "contactForm" });
+
+  // 2. Validate via shared schema with localized messages
+  const result = createContactSchema((key) => t(`errors.${key}`)).safeParse(body);
   if (!result.success) {
     return Response.json({ errors: result.error.flatten().fieldErrors }, { status: 400 });
   }
@@ -28,32 +37,30 @@ export async function POST(request: Request) {
   const fromEmail = process.env.CONTACT_FROM_EMAIL ?? "web@example.cz";
 
   if (!apiKey) {
-    console.error("[contact] RESEND_API_KEY není nastaven.");
-    return Response.json(
-      { error: "Formulář teď nelze odeslat. Napište prosím přímo na e-mail." },
-      { status: 500 },
-    );
+    console.error("[contact] RESEND_API_KEY is not set.");
+    return Response.json({ error: t("formError.unavailable") }, { status: 500 });
   }
 
   // 5. Send via Resend — instantiate inside handler so build works without the key
   const { Resend } = await import("resend");
   const resend = new Resend(apiKey);
 
+  // Owner notification email — kept in English (read by the site owner).
   const html = `
-    <p><strong>Jméno:</strong> ${escHtml(name)}</p>
-    <p><strong>E-mail:</strong> ${escHtml(email)}</p>
-    <p><strong>Telefon:</strong> ${escHtml(phone ?? "—")}</p>
+    <p><strong>Name:</strong> ${escHtml(name)}</p>
+    <p><strong>Email:</strong> ${escHtml(email)}</p>
+    <p><strong>Phone:</strong> ${escHtml(phone ?? "—")}</p>
     <hr />
-    <p><strong>Zpráva:</strong></p>
+    <p><strong>Message:</strong></p>
     <p>${escHtml(message).replace(/\n/g, "<br />")}</p>
   `;
 
   const text = [
-    `Jméno: ${name}`,
-    `E-mail: ${email}`,
-    `Telefon: ${phone ?? "—"}`,
+    `Name: ${name}`,
+    `Email: ${email}`,
+    `Phone: ${phone ?? "—"}`,
     "",
-    `Zpráva:\n${message}`,
+    `Message:\n${message}`,
   ].join("\n");
 
   try {
@@ -61,28 +68,22 @@ export async function POST(request: Request) {
     const { error: sendError } = await resend.emails.send({
       from: fromEmail,
       to: toEmail,
-      subject: `Nová poptávka z webu — ${name}`,
+      subject: `New enquiry from the website — ${name}`,
       html,
       text,
     });
 
     if (sendError) {
-      console.error("[contact] Resend vrátil chybu:", sendError.message, sendError.name);
-      return Response.json(
-        { error: "E-mail se nepodařilo odeslat. Napište prosím přímo na e-mail." },
-        { status: 500 },
-      );
+      console.error("[contact] Resend returned an error:", sendError.message, sendError.name);
+      return Response.json({ error: t("formError.sendFailed") }, { status: 500 });
     }
   } catch (err) {
     // Network-level failures (connection refused, timeout, …)
     console.error(
-      "[contact] Síťová chyba při volání Resend:",
-      err instanceof Error ? err.message : "neznámá chyba",
+      "[contact] Network error calling Resend:",
+      err instanceof Error ? err.message : "unknown error",
     );
-    return Response.json(
-      { error: "E-mail se nepodařilo odeslat. Napište prosím přímo na e-mail." },
-      { status: 500 },
-    );
+    return Response.json({ error: t("formError.sendFailed") }, { status: 500 });
   }
 
   return Response.json({ ok: true });

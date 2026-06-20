@@ -4,10 +4,6 @@
  */
 export const site = {
   name: "Karel Zíbar",
-  shortName: "Karel Zíbar",
-  tagline: "Fotograf — Plzeň a okolí",
-  description:
-    "Rodinné focení, svatby, události a letecké snímky z dronu v Plzni a okolí. Autentické fotografie, které zachytí skutečné okamžiky.",
   url: "https://example.cz",
   email: "karel.zibar@icloud.com",
   phone: "+420 722 616 617",

@@ -7,6 +7,7 @@ import { cn } from "@/lib/cn";
 import { site } from "@/lib/site";
 import { useScrolled } from "@/hooks/useScrolled";
 import { MobileMenu } from "./MobileMenu";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Header() {
   const scrolled = useScrolled();
@@ -58,6 +59,7 @@ export function Header() {
               {t(item.id)}
             </Link>
           ))}
+          <LanguageSwitcher className="border-border-strong border-l pl-6" />
         </nav>
 
         <button

@@ -189,12 +189,32 @@
     "successEyebrow": "Sent",
     "successHeading": "Thank you for your message!",
     "successText": "I'll get back to you within 48 hours. I'm looking forward to working together.",
-    "sendAnother": "Send another message"
+    "sendAnother": "Send another message",
+    "errors": {
+      "nameMin": "Name must be at least 2 characters.",
+      "nameMax": "Name must be at most 100 characters.",
+      "emailInvalid": "Please enter a valid email address.",
+      "messageMin": "Message must be at least 10 characters.",
+      "messageMax": "Message must be at most 2,000 characters.",
+      "gdpr": "Consent to data processing is required."
+    },
+    "formError": {
+      "failed": "Sending failed. Please try again or write directly by email.",
+      "network": "Couldn't reach the server. Check your connection and try again.",
+      "invalidRequest": "Invalid request.",
+      "unavailable": "The form can't be submitted right now. Please write directly by email.",
+      "sendFailed": "The email couldn't be sent. Please write directly by email."
+    }
   },
   "footer": {
     "navLabel": "Navigation",
     "contactLabel": "Contact",
     "rights": "All rights reserved.",
     "location": "Plzeň & surroundings"
+  },
+  "meta": {
+    "description": "Family sessions, weddings, events and aerial drone photography in Plzeň and the surrounding area. Authentic photos that capture real moments.",
+    "keywords": "photographer Plzeň, family photography Plzeň, wedding photographer Plzeň, drone photographer Plzeň, event photographer Plzeň, family photographer Plzeň region, aerial drone photography",
+    "ogTagline": "Family · Weddings · Events · Drone"
   }
 }

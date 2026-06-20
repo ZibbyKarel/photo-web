@@ -189,12 +189,32 @@
     "successEyebrow": "Odesláno",
     "successHeading": "Děkuji za zprávu!",
     "successText": "Ozvu se vám do 48 hodin. Těším se na spolupráci.",
-    "sendAnother": "Odeslat další zprávu"
+    "sendAnother": "Odeslat další zprávu",
+    "errors": {
+      "nameMin": "Jméno musí mít alespoň 2 znaky.",
+      "nameMax": "Jméno může mít nejvýše 100 znaků.",
+      "emailInvalid": "Zadejte platnou e-mailovou adresu.",
+      "messageMin": "Zpráva musí mít alespoň 10 znaků.",
+      "messageMax": "Zpráva může mít nejvýše 2 000 znaků.",
+      "gdpr": "Je třeba souhlas se zpracováním údajů."
+    },
+    "formError": {
+      "failed": "Odeslání se nezdařilo. Zkuste to prosím znovu nebo napište přímo na e-mail.",
+      "network": "Nepodařilo se spojit se serverem. Zkontrolujte připojení a zkuste to znovu.",
+      "invalidRequest": "Neplatný požadavek.",
+      "unavailable": "Formulář teď nelze odeslat. Napište prosím přímo na e-mail.",
+      "sendFailed": "E-mail se nepodařilo odeslat. Napište prosím přímo na e-mail."
+    }
   },
   "footer": {
     "navLabel": "Navigace",
     "contactLabel": "Kontakt",
     "rights": "Všechna práva vyhrazena.",
     "location": "Plzeň a okolí"
+  },
+  "meta": {
+    "description": "Rodinné focení, svatby, události a letecké snímky z dronu v Plzni a okolí. Autentické fotografie, které zachytí skutečné okamžiky.",
+    "keywords": "fotograf Plzeň, rodinné focení Plzeň, svatební fotograf Plzeň, fotograf z dronu Plzeň, fotograf událostí Plzeň, rodinný fotograf Plzeňský kraj, letecké fotografie dron",
+    "ogTagline": "Rodinné focení · Svatby · Události · Dron"
   }
 }

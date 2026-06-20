@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { getTranslations } from "next-intl/server";
 import { site } from "@/lib/site";
 
 export const size = {
@@ -8,7 +9,11 @@ export const size = {
 
 export const contentType = "image/png";
 
-export default async function Image() {
+export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const tf = await getTranslations({ locale, namespace: "footer" });
+  const tm = await getTranslations({ locale, namespace: "meta" });
+
   return new ImageResponse(
     <div
       style={{
@@ -61,7 +66,7 @@ export default async function Image() {
             fontFamily: "sans-serif",
           }}
         >
-          {site.location} a okol&#237;
+          {tf("location")}
         </span>
       </div>
 
@@ -88,7 +93,7 @@ export default async function Image() {
           fontWeight: "400",
         }}
       >
-        Rodinné focení · Svatby · Události · Dron
+        {tm("ogTagline")}
       </div>
     </div>,
     {

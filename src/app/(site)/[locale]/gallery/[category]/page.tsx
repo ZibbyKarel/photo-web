@@ -9,6 +9,7 @@ import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { getCategorySlugs, getPhotosByCategory, categories, isCategorySlug } from "@/lib/gallery";
 import { buildMetadata } from "@/lib/metadata";
+import type { Locale } from "@/i18n/routing";
 
 type PageProps = {
   params: Promise<{ locale: string; category: string }>;
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // buildMetadata handles title (bare, for template), og:title (full), description,
   // canonical URL (prevents canonicalizing category pages to /), and OG/Twitter cards.
   return buildMetadata({
+    locale: locale as Locale,
     title: `${t(`categories.${category}.title`)} — ${t("titleSuffix")}`,
     description: t(`categories.${category}.description`),
     path: `/gallery/${category}`,
