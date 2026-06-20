@@ -34,7 +34,7 @@ ve workflow. Je veřejný (inlinuje se do bundlu), takže to není tajemství.
 
 ## Změna domény / adresy, kde web běží
 
-Web teď běží na `https://zibbykarel.github.io/photo-web/`. URL adresa se skládá ze dvou částí,
+Web teď běží na `https://kzphoto.cz/`. URL adresa se skládá ze dvou částí,
 které je při změně potřeba upravit **obě**:
 
 | Co změnit | Kde | Hodnota |
