@@ -80,11 +80,12 @@ export async function GalleryPreview() {
                         >
                           <div className="relative aspect-square overflow-hidden">
                             {/*
-                             * `fill` (absolute inset-0) instead of width/height +
-                             * h-full: on iOS Safari < 16 a percentage-height image
-                             * inside an aspect-ratio-sized box collapses to 0 height
-                             * and the photo renders invisible. Absolute positioning
-                             * resolves height from the containing block, like Hero.
+                             * Use `fill` (absolute inset-0), matching Hero/About.
+                             * This was the only preview using width/height + a
+                             * percentage-height image (`h-full`) inside an
+                             * aspect-ratio box, and the only one that rendered
+                             * blank on mobile Safari. `fill` resolves height from
+                             * the containing block, which is the proven pattern.
                              */}
                             <Image
                               src={photo.src}
