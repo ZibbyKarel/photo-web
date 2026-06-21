@@ -12,8 +12,8 @@ export const site = {
   phone: "+420 722 616 617",
   phoneHref: "tel:+420722616617",
   location: "Plzeň",
-  instagram: "https://instagram.com/zibbykarel",
-  instagramHandle: "@zibbykarel",
+  instagram: "https://instagram.com/kzphoto_plzen",
+  instagramHandle: "@kzphoto_plzen",
   nav: [
     { id: "gallery", href: "/#gallery" },
     { id: "about", href: "/#about" },
