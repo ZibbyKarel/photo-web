@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "gallery": "node scripts/generate-gallery.mjs"
+    "gallery": "node scripts/generate-gallery.mjs",
+    "og": "node scripts/generate-og.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

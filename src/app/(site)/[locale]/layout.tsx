@@ -11,7 +11,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { routing, type Locale } from "@/i18n/routing";
 import { site } from "@/lib/site";
-import { localizedUrl, languageAlternates, ogLocale } from "@/lib/metadata";
+import { localizedUrl, languageAlternates, ogLocale, ogImage } from "@/lib/metadata";
 import "../../globals.css";
 
 const inter = Inter({
@@ -65,11 +65,13 @@ export async function generateMetadata({
       url: canonical,
       title: defaultTitle,
       description,
+      images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
       title: defaultTitle,
       description,
+      images: [ogImage.url],
     },
     robots: {
       index: true,
