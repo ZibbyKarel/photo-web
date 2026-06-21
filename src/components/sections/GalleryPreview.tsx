@@ -41,7 +41,7 @@ export async function GalleryPreview() {
           </div>
 
           {/* Category blocks — Reveal becomes the grid, children are category blocks */}
-          <Reveal stagger={0.12} className="grid grid-cols-1 gap-16 md:gap-20">
+          <Reveal stagger={0.12} className="grid w-full grid-cols-1 gap-16 md:gap-20">
             {blocks.map(({ cat, previews }) => {
               return (
                 <div key={cat.slug}>
@@ -66,9 +66,16 @@ export async function GalleryPreview() {
                     </div>
 
                     {/* Preview grid — Reveal becomes the grid, children are individual photo links */}
+                    {/*
+                     * w-full is load-bearing: this grid sits inside a Stack
+                     * (flex flex-col items-start), which does NOT stretch its
+                     * children horizontally. Without w-full the grid shrink-wraps
+                     * to its content; with `fill` images (no intrinsic width) that
+                     * collapses the tracks to 0 and the photos vanish.
+                     */}
                     <Reveal
                       stagger={0.07}
-                      className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3"
+                      className="grid w-full grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3"
                     >
                       {previews.map((photo) => (
                         <Link
@@ -79,14 +86,9 @@ export async function GalleryPreview() {
                           aria-hidden="true"
                         >
                           <div className="relative aspect-square overflow-hidden">
-                            {/*
-                             * Use `fill` (absolute inset-0), matching Hero/About.
-                             * This was the only preview using width/height + a
-                             * percentage-height image (`h-full`) inside an
-                             * aspect-ratio box, and the only one that rendered
-                             * blank on mobile Safari. `fill` resolves height from
-                             * the containing block, which is the proven pattern.
-                             */}
+                            {/* `fill` (absolute inset-0), matching Hero/About.
+                             * Requires the box to have real dimensions — see the
+                             * w-full note on the grid above. */}
                             <Image
                               src={photo.src}
                               alt={photo.alt}
