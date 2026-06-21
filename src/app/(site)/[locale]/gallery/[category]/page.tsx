@@ -50,8 +50,11 @@ export default async function GalleryCategoryPage({ params }: PageProps) {
   const t = await getTranslations("gallery");
   const photos = await getPhotosByCategory(slug);
 
-  // Other categories for navigation
-  const otherCategories = categories.filter((c) => c.slug !== slug);
+  // Other categories for navigation — drop empty ones (e.g. a newly added
+  // category with no photos yet) so we never link to an empty gallery page.
+  const others = categories.filter((c) => c.slug !== slug);
+  const othersPhotos = await Promise.all(others.map((c) => getPhotosByCategory(c.slug)));
+  const otherCategories = others.filter((_, i) => othersPhotos[i].length > 0);
 
   return (
     <>

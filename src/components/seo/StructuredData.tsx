@@ -12,6 +12,7 @@ const OFFERS = [
   { id: "family", price: "1800" },
   { id: "wedding", price: "8900" },
   { id: "event", price: "1500" },
+  { id: "commercial", price: "1200" },
   { id: "drone", price: "1200" },
 ] as const;
 

@@ -71,6 +71,10 @@
         "title": "Svatby a jiné události",
         "description": "Svatby, oslavy, křtiny, firemní i společenské akce zachycené v pohybu."
       },
+      "commercial": {
+        "title": "Reklamní focení",
+        "description": "Produkty, e-shop, provozovna i firemní portréty — fotky, které prodávají vaše zboží, službu i značku."
+      },
       "drone": {
         "title": "Z dronu",
         "description": "Letecké snímky — místa a okamžiky z ptačí perspektivy."
@@ -114,7 +118,23 @@
         "title": "Události",
         "price": "od 1 500 Kč / hod",
         "description": "Oslavy, křtiny, firemní i společenské akce.",
-        "features": ["Reportážní focení", "Online galerie", "Dodání do 10 dnů", "Flexibilní délka"]
+        "features": [
+          "Reportážní focení",
+          "Online galerie",
+          "Dodání do 10 dnů",
+          "Flexibilní délka"
+        ]
+      },
+      "commercial": {
+        "title": "Reklamní focení",
+        "price": "od 1 200 Kč / hod",
+        "description": "Produkty, e-shop, provozovna i firemní portréty pro váš web, sociální sítě a marketing.",
+        "features": [
+          "Produkty a e-shop od 290 Kč/foto",
+          "Provozovna a interiér od 2 500 Kč",
+          "Firemní portréty od 1 200 Kč/os.",
+          "Online galerie, dodání do 7 dnů"
+        ]
       },
       "drone": {
         "title": "Z dronu",

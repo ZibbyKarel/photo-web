@@ -16,6 +16,7 @@ export const pricingPackages: PricingPackage[] = [
   { id: "family", highlight: true },
   { id: "wedding" },
   { id: "event" },
+  { id: "commercial" },
   { id: "drone" },
 ] as const;
 

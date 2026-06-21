@@ -71,6 +71,10 @@
         "title": "Weddings & other events",
         "description": "Weddings, celebrations, christenings, corporate and social events captured in motion."
       },
+      "commercial": {
+        "title": "Commercial",
+        "description": "Products, e-shop, storefronts and team portraits — photos that sell your goods, service and brand."
+      },
       "drone": {
         "title": "From the drone",
         "description": "Aerial shots — places and moments from a bird's-eye view."
@@ -119,6 +123,17 @@
           "Online gallery",
           "Delivery within 10 days",
           "Flexible length"
+        ]
+      },
+      "commercial": {
+        "title": "Commercial",
+        "price": "from 1,200 CZK / hr",
+        "description": "Products, e-shop, storefronts and team portraits for your website, social media and marketing.",
+        "features": [
+          "Products & e-shop from 290 CZK/photo",
+          "Storefront & interior from 2,500 CZK",
+          "Team portraits from 1,200 CZK/person",
+          "Online gallery, delivery within 7 days"
         ]
       },
       "drone": {

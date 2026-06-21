@@ -19,6 +19,13 @@ export async function GalleryPreview() {
   // Resolve photos for each category upfront (cannot await inside the .map render).
   const previewsByCat = await Promise.all(categories.map((cat) => getPreviewPhotos(cat.slug, 4)));
 
+  // Pair each category with its previews and drop the empty ones — a category
+  // with no photos yet (e.g. a newly added one) would otherwise render a broken
+  // heading with an empty grid.
+  const blocks = categories
+    .map((cat, index) => ({ cat, previews: previewsByCat[index] }))
+    .filter((block) => block.previews.length > 0);
+
   return (
     <Section id="gallery" className="border-border scroll-mt-24 border-t">
       <Container>
@@ -35,8 +42,7 @@ export async function GalleryPreview() {
 
           {/* Category blocks — Reveal becomes the grid, children are category blocks */}
           <Reveal stagger={0.12} className="grid grid-cols-1 gap-16 md:gap-20">
-            {categories.map((cat, catIndex) => {
-              const previews = previewsByCat[catIndex];
+            {blocks.map(({ cat, previews }) => {
               return (
                 <div key={cat.slug}>
                   <Stack gap="lg">

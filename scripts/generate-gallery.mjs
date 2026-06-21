@@ -10,6 +10,7 @@
  *   1. Place your source images (JPG/JPEG/PNG) into:
  *        gallery-source/family/
  *        gallery-source/weddings-events/
+ *        gallery-source/commercial/
  *        gallery-source/drone/
  *        gallery-source/other/
  *   2. Run: npm run gallery
@@ -38,6 +39,10 @@ const CATEGORIES = [
   {
     slug: "weddings-events",
     altPrefix: "Wedding and event in Plzeň",
+  },
+  {
+    slug: "commercial",
+    altPrefix: "Commercial and product photography in Plzeň",
   },
   {
     slug: "drone",
@@ -93,6 +98,16 @@ const PLACEHOLDER_COLORS = {
     { r: 170, g: 110, b: 60 }, // warm copper
     { r: 140, g: 85, b: 45 }, // deep ochre
     { r: 180, g: 120, b: 68 }, // golden brown
+  ],
+  commercial: [
+    { r: 40, g: 44, b: 52 }, // graphite
+    { r: 55, g: 60, b: 70 }, // slate
+    { r: 70, g: 76, b: 88 }, // cool grey
+    { r: 48, g: 52, b: 62 }, // dark steel
+    { r: 62, g: 68, b: 80 }, // pewter
+    { r: 80, g: 86, b: 98 }, // light slate
+    { r: 36, g: 40, b: 48 }, // charcoal
+    { r: 74, g: 80, b: 92 }, // muted steel
   ],
   drone: [
     { r: 38, g: 85, b: 105 }, // aerial teal
@@ -279,6 +294,16 @@ async function main() {
           "A moment captured outside the studio",
           "A shot from the surroundings",
           "An authentic moment",
+        ],
+        commercial: [
+          "Product shot in the studio",
+          "A storefront and business interior",
+          "Detail of a product on a clean background",
+          "Branded product styling",
+          "Business portrait of a shop owner",
+          "Food and menu photography",
+          "Interior of a shop or provozovna",
+          "A commercial detail for marketing",
         ],
         drone: [
           "Aerial view of Plzeň",
