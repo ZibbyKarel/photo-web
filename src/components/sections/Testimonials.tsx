@@ -1,10 +1,9 @@
-import { getTranslations } from "next-intl/server";
-import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 import { Stack } from "@/components/ui/Stack";
 import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
-import { Placeholder } from "@/components/ui/Placeholder";
 import { getTestimonials } from "@/lib/content";
+import { getTranslations } from "next-intl/server";
 
 type TestimonialItem = { name: string; role: string; text: string };
 
@@ -38,16 +37,10 @@ export async function Testimonials() {
                   </Text>
                 </blockquote>
                 <figcaption className="border-border flex items-center gap-4 border-t pt-6">
-                  {/* Avatar placeholder */}
-                  <Placeholder
-                    aspect="1/1"
-                    className="h-12 w-12 shrink-0 rounded-full"
-                    aria-hidden="true"
-                  />
-                  <div>
+                  <Stack gap="xs">
                     <p className="text-foreground text-sm font-medium">{item.name}</p>
                     <p className="text-faint text-xs">{item.role}</p>
-                  </div>
+                  </Stack>
                 </figcaption>
               </figure>
             ))}
