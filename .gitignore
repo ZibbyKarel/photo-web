@@ -35,7 +35,7 @@ yarn-error.log*
 !.env.example
 
 # local Claude Code tooling (personal skills/agents/settings — not project code)
-.claude/
+# .claude/
 
 # vercel
 .vercel
