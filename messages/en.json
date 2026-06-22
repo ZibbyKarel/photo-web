@@ -95,6 +95,10 @@
       "extraPhoto": "Extra photo +{amount, number} CZK",
       "delivery": "Delivery within {days, number} days"
     },
+    "guarantee": {
+      "heading": "Satisfaction guarantee",
+      "text": "If you don't like the photos, I'll give you a full refund. No questions asked."
+    },
     "note": "These are introductory prices — I'm gradually building my portfolio and want quality photography to be accessible. Every job is different; I'm happy to discuss non-standard requests or a combination of services individually.",
     "packages": {
       "family": {

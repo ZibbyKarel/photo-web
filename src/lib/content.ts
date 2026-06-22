@@ -58,13 +58,13 @@ export const pricingPackages: PricingPackage[] = [
     deliveryDays: 30,
     hours: [3, 6],
   },
-  {
-    id: "commercial",
-    price: 1200,
-    perHour: true,
-    deliveryDays: 30,
-    hours: [3, 6],
-  },
+  // {
+  //   id: "commercial",
+  //   price: 1200,
+  //   perHour: true,
+  //   deliveryDays: 30,
+  //   hours: [3, 6],
+  // },
   {
     id: "drone",
     price: 1200,

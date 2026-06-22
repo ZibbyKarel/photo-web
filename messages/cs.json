@@ -95,6 +95,10 @@
       "extraPhoto": "Fotka navíc +{amount, number} Kč",
       "delivery": "Dodání do {days, number} dnů"
     },
+    "guarantee": {
+      "heading": "Záruka spokojenosti",
+      "text": "Pokud se vám fotky nebudou líbit, vrátím peníze. Bez podmínek."
+    },
     "note": "Uvedené ceny jsou zaváděcí — postupně si buduji portfolio a chci, aby kvalitní focení bylo dostupné. Každá zakázka je jiná; nestandardní požadavky nebo kombinaci služeb rád proberu individuálně.",
     "packages": {
       "family": {
